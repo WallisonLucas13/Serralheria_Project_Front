@@ -1,0 +1,54 @@
+.contentAll{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.titleDesc{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 3em;
+}
+.titleDesc h1{
+  font-size: 20pt;
+  font-weight: bold;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.titleDesc h1 span{
+  padding: 0.5em;
+  background-color: #222;
+  color: #ffbb33;
+  font-weight: normal;
+}
+.titleDesc p{
+  color: #7b7b7b;
+  margin-bottom: 1em;
+  font-size: 14pt;
+}
+
+@media screen and (max-width: 650px){
+  .titleDesc h1 span{
+    padding: 0.5em;
+    background-color: #222;
+    color: #ffbb33;
+    font-weight: normal;
+    display: block;
+    margin-top: 1em;
+  }
+
+  .titleDesc p{
+    color: #7b7b7b;
+    margin-bottom: 1em;
+    font-size: 14pt;
+    margin: auto;
+  }
+}
+
+.fail{
+    color: black;
+    background-color: red;
+  }

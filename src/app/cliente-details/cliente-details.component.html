@@ -1,0 +1,260 @@
+<div class="contentAll">
+
+    <div class="titleDesc">
+        <h1>Gerenciar Serviços</h1>
+        <p>Atualize registros e gerencie serviços</p>
+    </div>
+
+<mat-accordion>
+    <mat-expansion-panel (opened)="setPanelShow(1)" [expanded]="panelShow === 1">
+
+        <mat-expansion-panel-header class="headerPanel">
+
+            <mat-panel-title>
+                Visualizar Informações
+                &nbsp;
+                <mat-icon class="descIcon">preview</mat-icon>
+            </mat-panel-title>
+
+            <mat-panel-description>
+                Visualize todos os dados do Cliente
+                <span class="example-spacer"></span>
+                <mat-icon>preview</mat-icon>
+            </mat-panel-description>
+
+        </mat-expansion-panel-header>
+
+        <mat-card class="card-info">
+            <mat-toolbar style="font-size: 14pt;">
+                <span>Informações</span>
+                <span class="example-spacer"></span>
+                <mat-icon>info</mat-icon>
+            </mat-toolbar>
+
+            <table mat-table [dataSource]="clienteDetailsList" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="nome">
+                    <th mat-header-cell *matHeaderCellDef>Nome</th>
+                    <td mat-cell *matCellDef="let cliente"> {{cliente.nome}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="tel">
+                    <th mat-header-cell *matHeaderCellDef>Telefone</th>
+                    <td mat-cell *matCellDef="let cliente"> {{cliente.tel}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="bairro">
+                    <th mat-header-cell *matHeaderCellDef>Bairro</th>
+                    <td mat-cell *matCellDef="let cliente"> {{cliente.bairro}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="endereco">
+                    <th mat-header-cell *matHeaderCellDef>Endereço</th>
+                    <td mat-cell *matCellDef="let cliente"> {{cliente.endereco}}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsClienteView"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsClienteView;"></tr>
+
+            </table>
+        </mat-card>
+
+    </mat-expansion-panel>
+</mat-accordion>
+
+
+<mat-accordion>
+
+    <mat-expansion-panel (opened)="setPanelShow(2)" [expanded]="panelShow === 2">
+        <mat-expansion-panel-header class="headerPanel">
+
+            <mat-panel-title>
+                Atualizar Dados do Cliente
+                &nbsp;
+                <mat-icon class="descIcon">account_circle</mat-icon>
+            </mat-panel-title>
+
+            <mat-panel-description>
+                Modifique as informações do Cliente
+                <span class="example-spacer"></span>
+                <mat-icon>person</mat-icon>
+            </mat-panel-description>
+
+        </mat-expansion-panel-header>
+
+        <mat-card class="form-cliente">
+
+            <mat-toolbar>
+                Cliente
+                <span class="example-spacer"></span>
+                <mat-icon>settings</mat-icon>
+            </mat-toolbar>
+            <mat-card-content>
+
+                <div class="Cliente">
+
+                    <br>
+                    <form [formGroup]="form_cliente" class="example-form">
+
+                        <mat-form-field appearance="fill" class="example-full-width">
+                            <mat-label>Nome</mat-label>
+                            <input type="text" matInput placeholder="Nome" formControlName="nome" required>
+                        </mat-form-field>
+
+                        <table class="example-full-width" cellspacing="0">
+                            <tr>
+
+                                <td><mat-form-field appearance="fill" class="example-full-width">
+                                        <mat-label>Telefone</mat-label>
+                                        <input type="tel" matInput placeholder="Telefone" formControlName="tel"
+                                            required>
+                                    </mat-form-field></td>
+
+                                <td><mat-form-field appearance="fill" class="example-full-width">
+                                        <mat-label>Bairro</mat-label>
+                                        <input type="tel" matInput placeholder="Bairro" formControlName="bairro"
+                                            required>
+                                    </mat-form-field></td>
+
+                            </tr>
+                        </table>
+
+                        <mat-form-field appearance="fill" class="example-full-width">
+                            <mat-label>Endereço</mat-label>
+                            <input type="text" matInput placeholder="Endereço" formControlName="endereco" required>
+                        </mat-form-field>
+
+                        <button mat-stroked-button (click)="submit()">Atualizar</button>
+
+                    </form>
+                </div>
+
+            </mat-card-content>
+        </mat-card>
+    </mat-expansion-panel>
+</mat-accordion>
+
+<mat-accordion>
+    <mat-expansion-panel (opened)="setPanelShow(3)" [expanded]="panelShow === 3">
+
+        <mat-expansion-panel-header class="headerPanel">
+            <mat-panel-title>
+                Serviços
+                &nbsp;
+                <mat-icon class="descIcon">construction</mat-icon>
+            </mat-panel-title>
+            <mat-panel-description>
+                Todos os Serviços desse Cliente
+                <span class="example-spacer"></span>
+                <mat-icon>construction</mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-card class="card-servico-content">
+
+            <mat-toolbar>
+                Serviços
+                <span class="example-spacer"></span>
+                <mat-icon>list</mat-icon>
+            </mat-toolbar>
+            <mat-card-content>
+                <br>
+
+                <div>
+
+                    <div *ngIf="servicos$ | async as servicos; else loading">
+
+                        <div *ngIf="servicos.length != 0; else msg">
+
+                            <div *ngFor="let servico of servicos" class="card-position">
+
+                                <mat-card class="servico-card">
+
+                                    <mat-card-header>
+
+                                        <span class="example-spacer"></span>
+                                        <mat-icon>construction</mat-icon>
+                                        <mat-card-title>{{servico.nome}}</mat-card-title>
+                                        <mat-card-subtitle>Serviço</mat-card-subtitle>
+
+                                    </mat-card-header>
+
+                                    <mat-card-actions style="position: relative; top: 30px;">
+
+                                        <button mat-icon-button color="primary"
+                                            (click)="goEditPageServico(servico)"
+                                            aria-label="Example icon button with a delete icon">
+                                            <mat-icon>edit</mat-icon>
+                                        </button>
+                                        <span class="example-spacer"></span>
+
+                                        <button mat-icon-button color="warn" (click)="deleteServico(servico.id)"
+                                            aria-label="Example icon button with a delete icon">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+
+                                    </mat-card-actions>
+
+                                </mat-card>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <mat-card class="form-servico-card">
+                        <mat-expansion-panel style="width: 100%;">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    <mat-icon>add_circle</mat-icon>
+                                    &nbsp;
+                                    Novo Serviço
+                                    <span class="example-spacer"></span>
+                                    <mat-icon>construction</mat-icon>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+
+                            <mat-card-content>
+
+                                <form [formGroup]="form_servico">
+
+                                    <br>
+                                    <mat-form-field appearance="fill" class="full-width">
+                                        <mat-label>Nome</mat-label>
+                                        <input type="text" matInput placeholder="Nome" formControlName="nome" required>
+                                    </mat-form-field>
+
+                                    <mat-form-field appearance="fill" class="full-width">
+                                        <mat-label>Descrição</mat-label>
+                                        <textarea matInput placeholder="Descrição do serviço" formControlName="desc"
+                                            required></textarea>
+                                    </mat-form-field>
+
+                                    <button mat-stroked-button (click)="submitServico()">Salvar</button>
+
+                                </form>
+
+                            </mat-card-content>
+                        </mat-expansion-panel>
+                    </mat-card>
+
+                </div>
+
+            </mat-card-content>
+
+        </mat-card>
+    </mat-expansion-panel>
+</mat-accordion>
+
+<ng-template #loading>
+    <div class="loading-spinner">
+        <mat-spinner></mat-spinner>
+    </div>
+</ng-template>
+<ng-template #msg>
+    <div>
+        <h2 style="color: red;">Este Cliente não possui Serviços!</h2>
+        <h3 style="color: red;">Crie um novo serviço abaixo: </h3>
+    </div>
+</ng-template>
+
+</div>

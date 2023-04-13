@@ -1,0 +1,63 @@
+<div class="contentAll">
+
+    <div class="titleDesc">
+        <h1>Cadastrar Cliente</h1>
+        <p>Crie registros e depois adicione seus serviços</p>
+    </div>
+
+
+<mat-card class="formNew">
+    <mat-toolbar class="toolbar-card">
+
+        <span>Salvar Cliente</span>
+        <span class="example-spacer"></span>
+        <button mat-stroked-button (click)="goclientesPage()">Clientes</button>
+
+    </mat-toolbar>
+    <mat-card-content>
+        <br>
+
+        <form [formGroup]="form" class="example-form">
+
+            <mat-form-field appearance="fill" class="example-full-width">
+                <mat-label>Nome</mat-label>
+                <input type="text" matInput placeholder="Nome" formControlName="nome" required>
+            </mat-form-field>
+
+            <table class="example-full-width" cellspacing="0">
+                <tr>
+
+                    <td><mat-form-field appearance="fill" class="example-full-width">
+                            <mat-label>Telefone</mat-label>
+                            <input type="tel" matInput placeholder="Telefone" formControlName="tel" required>
+                        </mat-form-field></td>
+
+                    <td><mat-form-field appearance="fill" class="example-full-width">
+                            <mat-label>Bairro</mat-label>
+                            <input type="tel" matInput placeholder="Bairro" formControlName="bairro" required>
+                        </mat-form-field></td>
+
+                    <div *ngIf="!loading_template; else loading"></div>
+
+                </tr>
+            </table>
+
+            <mat-form-field appearance="fill" class="example-full-width">
+                <mat-label>Endereço</mat-label>
+                <input type="text" matInput placeholder="Endereço" formControlName="endereco" required>
+            </mat-form-field>
+
+            <button mat-stroked-button (click)="submit()">Cadastrar</button>
+
+        </form>
+
+        <ng-template #loading>
+            <div class="loading-spinner">
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
+        </ng-template>
+
+    </mat-card-content>
+</mat-card>
+
+</div>

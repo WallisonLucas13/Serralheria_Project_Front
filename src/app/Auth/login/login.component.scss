@@ -1,0 +1,58 @@
+.contentAll{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6em;
+}
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+.formCard{
+    width: 40%;
+    padding: 1.5em;
+}
+
+.toolbar-card{
+    border-bottom: 1px #7b7b7b solid;
+    margin-bottom: 1.5em;
+    width: 100%;
+  }
+
+.contentInput{
+    width: 100%;
+}
+.contentButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contentButton button{
+    transition: 0.5s;
+}
+.contentButton button:hover{
+    background-color: #222;
+    color: #ffbb33;
+}
+
+@media screen and (max-width: 800px){
+    .formCard{
+      width: 80%;
+      margin: 4em auto;
+      text-align: center;
+  }
+  }
+  @media screen and (max-width: 600px){
+    .formCard{
+      width: 90%;
+      margin: 4em auto;
+      text-align: center;
+  }
+  }
+  @media screen and (max-width: 500px){
+    .formCard{
+      width: 95%;
+      margin: 4em auto;
+      text-align: center;
+  }
+}

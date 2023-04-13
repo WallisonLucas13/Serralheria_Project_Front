@@ -1,0 +1,38 @@
+<mat-toolbar class="navContent">
+
+    <span class="title">Serralheria Pontualidade</span>
+    <span class="example-spacer"></span>
+    
+    <div class="actions-nav">
+      <button (click)="goHomePage()" mat-stroked-button>Home</button>
+
+      <button mat-stroked-button (click)="goCadastroPage()">Cadastrar</button>
+      &nbsp;&nbsp;
+      <button mat-stroked-button (click)="goCursosPage()">Clientes</button>
+    </div>
+
+    <div class="menu-card">
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item class="menu-item" (click)="goHomePage()">
+          <mat-icon>home</mat-icon>
+          <span>Home</span>
+        </button>
+        <button mat-menu-item  class="menu-item" (click)="goCursosPage()">
+          <mat-icon>list</mat-icon>
+          <span>Clientes</span>
+        </button>
+        <button mat-menu-item  class="menu-item" (click)="goCadastroPage()">
+          <mat-icon>add</mat-icon>
+          <span>Cadastrar Cliente</span>
+        </button>
+      </mat-menu>
+    </div>
+
+</mat-toolbar>
+
+<router-outlet></router-outlet>
+

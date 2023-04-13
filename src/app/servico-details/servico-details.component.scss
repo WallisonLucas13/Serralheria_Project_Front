@@ -1,0 +1,238 @@
+.contentAll{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.full-width{
+    width: 100%;
+}
+mat-card{
+    width: 80%;
+    margin: 4em auto;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.min-width{
+    width: 100%;
+    min-height: 150px;
+}
+.custom-snack-error{
+    color: red !important;
+    background-color: red !important;
+}
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  .loading-spinner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+table{
+    width: 100%;
+}
+.servico-card{
+    width: 250px;
+    height: 150px;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.card-servico-content{
+    max-width: 80%;
+    display: flex;
+}
+.card-position{
+    display: inline-block;
+    position: relative;
+
+}
+
+.form-cliente{
+    max-width: 60%;
+
+}
+.form-material{
+    max-width: 100%;
+}
+
+.loading-spinner-mini{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+}
+td, th {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+.example-form {
+    width: 100%;
+  }
+  
+.example-full-width {
+    width: 100%;
+  }
+  
+  td {
+    padding-right: 8px;
+  }
+
+  .maoDeObraForm{
+    width: 50%;
+    margin: 4em auto;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  .descontoForm{
+    width: 50%;
+    margin: 4em auto;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  .orcamentoForm{
+    width: 80%;
+    margin: 4em auto;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  .example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+  }
+  
+  .example-margin {
+    margin: 0 5px;
+  }
+  .checkBoxOrcamento{
+    max-width: 95%;
+    margin: 4em auto;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    position: relative;
+    bottom: 50px;
+  }
+
+  .titleDesc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 3em;
+    margin-bottom: 2em;
+  }
+  .titleDesc h1{
+    font-size: 20pt;
+    font-weight: bold
+  }
+  .titleDesc p{
+    color: #7b7b7b;
+    margin-bottom: 1em;
+    font-size: 14pt;
+  }
+  .custoMaterial{
+    color: green;
+    margin-left: 1em;
+  }
+
+  @media screen and (max-width: 820px) {
+    .descIcon{
+        display: none;
+    }
+    .headerPanel{
+        padding: 1.5em;
+    }
+    mat-card{
+      width: 90%;
+      margin: 4em auto;
+      text-align: center;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+    .custoMaterialDesc{
+      display: none;
+    }
+    .custoMaterial{
+      color: green;
+      display: block;
+    }
+    .card-materiais{
+      width: 100%;
+    }
+    .content-form-material{
+      display: flex;
+      flex-direction: column;
+    }
+    .maoDeObraForm{
+      width: 70%;
+      margin: 4em auto;
+      text-align: center;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .descontoForm{
+      width: 70%;
+      margin: 4em auto;
+      text-align: center;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .orcamentoForm{
+      width: 100%;
+      margin: 4em auto;
+      text-align: center;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .example-section {
+      display: flex;
+      align-content: center;
+      align-items: center;
+      height: 60px;
+      padding: 1.5em;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .card-info{
+        width: 95%;
+        margin: 4em auto;
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .example-full-width {
+        width: 100%;
+        display: grid;
+      }
+
+    .atualizar-servico-card{
+      width: 100%;
+    }
+    .maoDeObraForm{
+      width: 100%;
+      margin: 4em auto;
+      text-align: center;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .descontoForm{
+      width: 100%;
+      margin: 4em auto;
+      text-align: center;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .orcamentoForm{
+      width: 100%;
+      margin: 4em auto;
+      text-align: center;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .example-section {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content:center;
+      padding: 2em;
+    }
+}

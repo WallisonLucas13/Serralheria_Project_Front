@@ -1,0 +1,148 @@
+.contentAll{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.full-width{
+    width: 100%;
+}
+mat-card{
+    width: 80%;
+    margin: 4em auto;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.min-width{
+    width: 100%;
+    min-height: 150px;
+}
+.custom-snack-error{
+    color: red !important;
+    background-color: red !important;
+}
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  .loading-spinner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+table{
+    text-align: center !important;
+    width: 100%;
+}
+td, th {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+.servico-card{
+    width: 250px;
+    height: 150px;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-right: 2em;
+}
+.card-servico-content{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.form-servico-card{
+    width: 60%;
+}
+.card-position{
+    display: inline-block;
+    position: relative;
+}
+
+.form-cliente{
+    width: 60%;
+}
+.example-form {
+    width: 100%;
+  }
+  
+.example-full-width {
+    width: 100%;
+  }
+  
+  td {
+    padding-right: 8px;
+  }
+
+  .formNew{
+    max-width: 50%;
+    margin: 4em auto;
+    text-align: center;
+  }
+
+  .titleDesc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 3em;
+  }
+  .titleDesc h1{
+    font-size: 20pt;
+    font-weight: bold
+  }
+  .titleDesc p{
+    color: #7b7b7b;
+    margin-bottom: 3em;
+    font-size: 14pt;
+  }
+
+@media screen and (max-width: 820px) {
+    .descIcon{
+        display: none;
+    }
+    .headerPanel{
+        padding: 1.5em;
+    }
+    .form-cliente{
+        width: 80%;
+    }
+    .example-full-width {
+        width: 100%;
+        display: grid;
+      }
+
+      .card-servico-content{
+        width: 90%;
+        margin: auto;
+        display: flex;
+    }
+
+    .form-servico-card{
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .card-info{
+        width: 95%;
+        margin: 4em auto;
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .form-cliente{
+        width: 95%;
+    }
+    .example-full-width {
+        width: 100%;
+        display: grid;
+      }
+
+      .card-servico-content{
+        width: 100%;
+        margin: auto;
+        display: flex;
+    }
+    .form-servico-card{
+        width: 100%;
+    }
+}

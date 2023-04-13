@@ -1,0 +1,61 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+.navContent{
+  position: sticky;
+  z-index: 1000;
+  border-bottom: 1px #7a7a7a solid;
+}
+
+.menu-card{
+  display: none;
+}
+.actions-nav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1em;
+}
+.actions-nav button{
+  margin-right: 0.5em;
+  border: none;
+  transition: 0.2s;
+  font-weight: bold;
+}
+
+.actions-nav button:hover{
+  transform: scale(1.1);
+  color: #ffbb33;
+  font-weight: normal;
+}
+
+::ng-deep .fail{
+  color: black !important;
+  background-color: red !important;
+}
+
+@media screen and (max-width: 620px){
+  .actions-nav{
+    display: none;
+  }
+  .menu-card{
+    display: block;
+    transition: 0.5s;
+  }
+  .menu-item{
+   
+  }
+  .menu-card:hover{
+    transform: scale(1.1);
+  }
+}
+
+.title{
+  margin-left: 1.5em;
+  font-family: monospace;
+  font-size:15pt;
+  font-weight: bold;
+  border-bottom: 3px #ffbb33 solid;
+}
+  

@@ -1,0 +1,103 @@
+.contentAll{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.full-width{
+    width: 100%;
+}
+mat-card{
+    width: 60%;
+    margin: 4em auto;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+@media screen and (max-width: 800px){
+  mat-card{
+    width: 80%;
+    margin: 4em auto;
+    text-align: center;
+}
+}
+@media screen and (max-width: 600px){
+  mat-card{
+    width: 90%;
+    margin: 4em auto;
+    text-align: center;
+}
+}
+@media screen and (max-width: 500px){
+  mat-card{
+    width: 95%;
+    margin: 4em auto;
+    text-align: center;
+}
+.example-full-width {
+  width: 100%;
+  display: grid;
+}
+}
+.min-width{
+    width: 100%;
+    min-height: 150px;
+}
+.custom-snack-error{
+    color: red !important;
+    background-color: red !important;
+}
+.example-spacer {
+    flex: 1 1 auto;
+  }
+::ng-deep .fail{
+    color: black !important;
+    background-color: red !important;
+}
+
+.loading-spinner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+.example-form {
+    width: 100%;
+  }
+  
+.example-full-width {
+    width: 100%;
+  }
+  
+  td {
+    padding-right: 8px;
+  }
+
+  .toolbar-card{
+    border-bottom: 1px #7b7b7b solid;
+    margin-bottom: 0.5em;
+  }
+
+input{
+   border-radius: 0;
+   border: none;
+}
+input::placeholder{
+  color: #7b7b7b;
+}
+
+.titleDesc{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 3em;
+}
+.titleDesc h1{
+  font-size: 20pt;
+  font-weight: bold
+}
+.titleDesc p{
+  color: #7b7b7b;
+  margin-bottom: 1em;
+  font-size: 14pt;
+}

@@ -1,0 +1,415 @@
+<div class="contentAll">
+
+    <div class="titleDesc">
+        <h1>Gerenciar Materiais e ferramentas</h1>
+        <p>Adicione materias ao serviço</p>
+    </div>
+
+<mat-accordion>
+    <mat-expansion-panel (opened)="setPanelShow(1)" [expanded]="panelShow === 1">
+        <mat-expansion-panel-header class="headerPanel">
+
+            <mat-panel-title>
+                Informações do Serviço
+                &nbsp;
+                <mat-icon class="descIcon">info</mat-icon>
+            </mat-panel-title>
+
+            <mat-panel-description>
+                Visualize Todas as Informações do Serviço
+                <span class="example-spacer"></span>
+                <mat-icon>info</mat-icon>
+            </mat-panel-description>
+
+        </mat-expansion-panel-header>
+
+        <mat-card class="card-info">
+            <mat-toolbar>
+                <span>Informações</span>
+                <span class="example-spacer"></span>
+                <mat-icon>info</mat-icon>
+            </mat-toolbar>
+            
+            <table mat-table [dataSource]="servicoDetailsList" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="nome">
+                    <th mat-header-cell *matHeaderCellDef>Nome</th>
+                    <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="desc">
+                    <th mat-header-cell *matHeaderCellDef>Descrição</th>
+                    <td mat-cell *matCellDef="let element"> {{element.desc}} </td>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </mat-card>
+
+    </mat-expansion-panel>
+</mat-accordion>
+
+<mat-accordion>
+
+    <mat-expansion-panel (opened)="setPanelShow(2)" [expanded]="panelShow === 2">
+        <mat-expansion-panel-header class="headerPanel">
+            <mat-panel-title>
+                Atualizar Serviço
+                &nbsp;
+                <mat-icon class="descIcon">settings</mat-icon>
+            </mat-panel-title>
+
+            <mat-panel-description>
+                Modifique qualquer informação do serviço
+                <span class="example-spacer"></span>
+                <mat-icon>settings</mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-card class="atualizar-servico-card">
+            <mat-toolbar>
+                <span>Atualizar Serviço</span>
+                <span class="example-spacer"></span>
+                <mat-icon>update</mat-icon>
+            </mat-toolbar>
+            <mat-card-content>
+
+                <form [formGroup]="formServico">
+
+                    <br>
+                    <mat-form-field appearance="fill" class="full-width">
+                        <mat-label>Nome</mat-label>
+                        <input type="text" matInput placeholder="Nome" formControlName="nome" required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill" class="full-width">
+                        <mat-label>Descrição</mat-label>
+                        <textarea matInput placeholder="Descrição do serviço" formControlName="desc"
+                            required></textarea>
+                    </mat-form-field>
+
+                    <button mat-stroked-button (click)="submitServico()">Atualizar</button>
+
+                </form>
+
+            </mat-card-content>
+
+        </mat-card>
+    </mat-expansion-panel>
+</mat-accordion>
+
+<mat-accordion>
+    <mat-expansion-panel (opened)="setPanelShow(3)" [expanded]="panelShow === 3">
+        <mat-expansion-panel-header class="headerPanel">
+            <mat-panel-title>
+                Gerenciar Materiais
+                &nbsp;
+                <mat-icon class="descIcon">settings_applications</mat-icon>
+            </mat-panel-title>
+            <mat-panel-description>
+
+                <div *ngIf="maoDeObra$ | async as maoDeObra; else loadingMini">
+                    <span>Custo Atual com materiais: <span style="color: green;"> R$
+                            {{maoDeObra.valorTotalMateriais}},00 </span></span>
+                </div>
+
+                <span class="example-spacer"></span>
+                <mat-icon>settings_applications</mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-card class="card-materiais">
+            <mat-toolbar>
+                <span>Materiais</span>
+                <span class="example-spacer"></span>
+                <div *ngIf="maoDeObra$ | async as maoDeObra; else loadingMini" style="display: flex;">
+                    <span class="custoMaterialDesc">Custo Atual com materiais:</span>
+                    <span class="custoMaterial"> R${{maoDeObra.valorTotalMateriais}},00 </span>
+                </div>
+
+                &nbsp;
+                &nbsp;
+                <mat-icon>list</mat-icon>
+            </mat-toolbar>
+
+            <div *ngIf="materiais$ | async as materiaisData; else loading">
+                <table mat-table [dataSource]="materiaisData" class="mat-elevation-z8">
+
+                    <ng-container matColumnDef="nome">
+                        <th mat-header-cell *matHeaderCellDef>Nome</th>
+                        <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+                    </ng-container>
+
+
+                    <ng-container matColumnDef="quant">
+                        <th mat-header-cell *matHeaderCellDef>Quantidade</th>
+                        <td mat-cell *matCellDef="let element"> {{element.quant}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="valor">
+                        <th mat-header-cell *matHeaderCellDef>Valor</th>
+                        <td mat-cell *matCellDef="let element"> {{element.valor}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="delete">
+                        <th mat-header-cell *matHeaderCellDef>Apagar</th>
+                        <td mat-cell *matCellDef="let element">
+
+                            <button color="accent" (click)="deleteMaterial(element.id)" mat-icon-button
+                                class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+
+                        </td>
+                    </ng-container>
+
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumnsMateriais"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumnsMateriais;"></tr>
+                </table>
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <mat-accordion>
+
+                <mat-expansion-panel>
+
+                    <mat-expansion-panel-header class="headerPanel">
+                        <mat-panel-title>
+                            Adicionar Material
+                            &nbsp;
+                            <mat-icon class="descIcon">add</mat-icon>
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            insira um novo material
+                            <span class="example-spacer"></span>
+                            <mat-icon>list</mat-icon>
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <form [formGroup]="formMaterial">
+
+                        <table class="example-full-width" cellspacing="0">
+                            <tr class="content-form-material">
+
+                                <td><mat-form-field appearance="fill" class="full-width">
+                                        <mat-label>Nome</mat-label>
+                                        <input type="text" matInput placeholder="Nome" formControlName="nome" required>
+                                    </mat-form-field></td>
+
+                                <td><mat-form-field appearance="fill" class="full-width">
+                                        <mat-label>Valor</mat-label>
+                                        <input type="number" matInput placeholder="Valor" formControlName="valor"
+                                            required>
+                                    </mat-form-field></td>
+
+                                <td><mat-form-field appearance="fill" class="full-width">
+                                        <mat-label>Quantidade</mat-label>
+                                        <input type="number" matInput placeholder="Quantidade" formControlName="quant"
+                                            required>
+                                    </mat-form-field></td>
+
+                            </tr>
+                        </table>
+
+                        <button mat-stroked-button (click)="submitMaterial()">Adicionar</button>
+                    </form>
+
+                </mat-expansion-panel>
+
+
+            </mat-accordion>
+        </mat-card>
+    </mat-expansion-panel>
+</mat-accordion>
+
+<mat-accordion>
+    <mat-expansion-panel (opened)="setPanelShow(5)" [expanded]="panelShow === 5">
+        <mat-expansion-panel-header class="headerPanel">
+            <mat-panel-title>
+                Definir Mão De Obra
+                &nbsp;
+                <mat-icon class="descIcon">paid</mat-icon>
+            </mat-panel-title>
+            <mat-panel-description>
+
+                <div *ngIf="maoDeObra$ | async as maoDeObra; else loadingMini">
+                    <span>Custo Mão De Obra: <span style="color: green;"> R$ {{maoDeObra.valor}},00</span></span>
+                </div>
+
+                <span class="example-spacer"></span>
+                <mat-icon>paid</mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-card class="maoDeObraForm">
+            <mat-toolbar>
+                <div *ngIf="maoDeObra$ | async as maoDeObra; else loadingMini">
+                    <span>Custo Mão De Obra: <span style="color: green;"> R$ {{maoDeObra.valor}},00 </span></span>
+                </div>
+                &nbsp;
+                <mat-icon>paid</mat-icon>
+            </mat-toolbar>
+
+            <mat-card-content>
+                <br>
+
+                <form [formGroup]="formServicoMaoDeObra">
+
+                    <mat-form-field appearance="fill" class="full-width">
+                        <mat-label>Mão De Obra</mat-label>
+                        <input type="number" matInput placeholder="Valor" formControlName="valor" required>
+                    </mat-form-field>
+
+                    <button mat-stroked-button color="accent" (click)="submitMaoDeObra()">Definir</button>
+
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </mat-expansion-panel>
+</mat-accordion>
+
+<mat-accordion>
+    <mat-expansion-panel (opened)="setPanelShow(6)" [expanded]="panelShow === 6">
+        <mat-expansion-panel-header class="headerPanel">
+            <mat-panel-title>
+                Gerenciar Custo Final Do Serviço
+                &nbsp;
+                <mat-icon class="descIcon">paid</mat-icon>
+            </mat-panel-title>
+
+            <mat-panel-description>
+
+                <div *ngIf="maoDeObra$ | async as maoDeObra; else loadingMini">
+                    <span>Custo Final: <span style="color: green;"> R$ {{maoDeObra.valorFinal}},00</span> com desconto
+                        de {{maoDeObra.desconto}}%</span>
+                </div>
+
+                <span class="example-spacer"></span>
+                <mat-icon>paid</mat-icon>
+            </mat-panel-description>
+
+        </mat-expansion-panel-header>
+
+        <mat-card class="descontoForm">
+            <mat-toolbar>
+
+                <div *ngIf="maoDeObra$ | async as maoDeObra; else loadingMini">
+                    <span>Desconto de {{maoDeObra.desconto}}%: <span style="color: green;"> R$
+                            {{maoDeObra.valorFinal}},00 </span></span>
+                </div>
+
+                <span class="example-spacer"></span>
+                <mat-icon>payments</mat-icon>
+            </mat-toolbar>
+
+            <mat-card-content>
+
+                <br>
+                <form [formGroup]="descontoForm">
+
+                    <mat-form-field appearance="fill" class="full-width">
+                        <mat-label>Porcentagem de Desconto</mat-label>
+                        <input type="number" matInput placeholder="1" formControlName="porcentagem" max="100" required>
+                    </mat-form-field>
+
+                    <button mat-stroked-button color="accent" (click)="submitDesconto()">Aplicar</button>
+
+                </form>
+
+            </mat-card-content>
+
+        </mat-card>
+    </mat-expansion-panel>
+</mat-accordion>
+
+<mat-accordion>
+    <mat-expansion-panel (opened)="setPanelShow(7)" [expanded]="panelShow === 7">
+        <mat-expansion-panel-header class="headerPanel">
+            <mat-panel-title>
+                Gerar Orçamento do serviço
+                &nbsp;
+                <mat-icon class="descIcon">print</mat-icon>
+            </mat-panel-title>
+            <mat-panel-description>
+                Emitir Orçamento em PDF
+                <span class="example-spacer"></span>
+                <mat-icon>print</mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-card class="orcamentoForm">
+            <mat-toolbar>
+                <span>Orçamento</span>
+                <span class="example-spacer"></span>
+
+                &nbsp;
+                <mat-icon>print</mat-icon>
+            </mat-toolbar>
+
+            <mat-card-content>
+
+                <br>
+                <form [formGroup]="formOrcamento">
+
+                    <mat-form-field appearance="fill" class="full-width">
+                        <mat-label>Email de destino</mat-label>
+                        <input type="email" matInput placeholder="Ex. pat@example.com" formControlName="adress"
+                            required>
+                    </mat-form-field>
+
+                    <mat-card class="checkBoxOrcamento">
+
+                        <section class="example-section">
+
+                            <mat-checkbox class="example-margin" formControlName="ocultarMateriais">Ocultar
+                                Materiais</mat-checkbox>
+
+                            <mat-checkbox class="example-margin" formControlName="ocultarMaoDeObra">Ocultar
+                                Mão De Obra</mat-checkbox>
+
+                            <mat-checkbox class="example-margin" formControlName="ocultarDesconto">Ocultar
+                                Desconto</mat-checkbox>
+
+                        </section>
+
+                        </mat-card>
+
+                    <button mat-raised-button style="color: #ffbb33; background-color: #222;margin:auto;"
+                        (click)="sendOrcamentoRequest()">Gerar
+                        Orçamento</button>
+
+                    <div *ngIf="!loading_template; else loading_bar"></div>
+
+                </form>
+
+            </mat-card-content>
+
+        </mat-card>
+
+    </mat-expansion-panel>
+</mat-accordion>
+
+
+<ng-template #loading>
+    <div class="loading-spinner">
+        <mat-spinner></mat-spinner>
+    </div>
+</ng-template>
+
+<ng-template #loadingMini>
+    <div class="loading-spinner-mini">
+        <mat-spinner></mat-spinner>
+    </div>
+</ng-template>
+<ng-template #loading_bar>
+    <div class="loading-spinner">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+</ng-template>
+</div>

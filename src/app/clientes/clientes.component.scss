@@ -1,0 +1,88 @@
+.contentAll{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+table{
+    width: 100%;
+}
+
+.titleDesc{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 3em;
+}
+.titleDesc h1{
+  font-size: 20pt;
+  font-weight: bold
+}
+.titleDesc p{
+  color: #7b7b7b;
+  margin-bottom: 3em;
+  font-size: 14pt;
+}
+
+mat-card{
+    width: 70%;
+    margin: auto;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+.toolbar-card{
+  border-bottom: 1px #7b7b7b solid;
+  margin-bottom: 1em;
+}
+
+mat-card mat-card-content{
+  border: none;
+}
+
+.demo-button-container {
+    padding-bottom: 16px;
+}
+  
+  .demo-button + .demo-button {
+    margin-left: 8px;
+  }
+
+.loading-spinner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+td, th {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+@media screen and (max-width: 560px) {
+  mat-card{
+    width: 80%;
+    margin: 4em auto;
+    text-align: center;
+}
+}
+
+@media screen and (max-width: 500px) {
+  mat-card{
+    width: 90%;
+    margin: 4em auto;
+    text-align: center;
+}
+}
+
+@media screen and (max-width: 360px) {
+  mat-card{
+    width: 100%;
+    margin: 4em auto;
+    text-align: center;
+}
+}
