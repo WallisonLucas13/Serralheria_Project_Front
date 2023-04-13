@@ -23,17 +23,17 @@ export class LoginComponent {
 
   submit(){
     this.service.sendLogin(this.form).pipe(
-      map(auth => {
-        localStorage.setItem("token", auth.token);
-        window.alert("Success");
-        this.router.navigateByUrl("clientes");
-      }),
       catchError(err => {
         window.alert(err.status);
         window.alert(err.body);
         return of();
       })
-    ).subscribe(() => {});
+    )
+    .subscribe((body) => {
+      localStorage.setItem("token", body.token);
+      window.alert("Success");
+      this.router.navigateByUrl("clientes");
+    });
   }
 
 }

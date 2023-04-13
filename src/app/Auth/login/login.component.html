@@ -10,13 +10,11 @@
 
         <form [formGroup]="form">
 
-            <div>
                 <mat-form-field class="contentInput" appearance="outline">
+                    <mat-label>Nome</mat-label>
                     <input matInput placeholder="Nome" formControlName="username">
                 </mat-form-field>
-            </div>
 
-            <div>
                 <mat-form-field class="contentInput" appearance="outline">
                     <mat-label>Senha</mat-label>
                     <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
@@ -24,10 +22,9 @@
                       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
                 </mat-form-field>
-            </div>
 
             <div class="contentButton">
-                <button mat-stroked-button type="submit" (click)="submit()">Login</button>
+                <button mat-stroked-button (click)="submit()">Login</button>
             </div>
 
         </form>

@@ -13,6 +13,6 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   sendLogin(form: FormGroup){
-    return this.http.post<AuthenticationResponse>(this.API_POST, form.value);
+    return this.http.post<AuthenticationResponse>(this.API_POST, form.value, {observe: 'body'});
   }
 }
