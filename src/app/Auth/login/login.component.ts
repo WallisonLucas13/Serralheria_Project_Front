@@ -29,7 +29,8 @@ export class LoginComponent {
         this.router.navigateByUrl("clientes");
       }),
       catchError(err => {
-        window.alert(err);
+        window.alert(err.status);
+        window.alert(err.body);
         return of();
       })
     ).subscribe(() => {});
