@@ -117,7 +117,7 @@ export class ServicoDetailsComponent {
       map(response => {
         this.snack.open("Serviço Atualizado com Sucesso!", "Sucess!")._dismissAfter(2000);
         this.formServico.reset(this.formServico);
-        this.route.navigateByUrl('clientes')
+        this.route.navigateByUrl('cliente/details')
       }),
 
       catchError(error => {

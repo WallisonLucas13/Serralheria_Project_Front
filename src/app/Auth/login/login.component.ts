@@ -24,7 +24,7 @@ export class LoginComponent {
   submit(){
     this.service.sendLogin(this.form).pipe(
       map(auth => {
-        localStorage.setItem("token", JSON.stringify(auth.token));
+        localStorage.setItem("token", auth.token);
         window.alert("Success");
         this.router.navigateByUrl("clientes");
       }),

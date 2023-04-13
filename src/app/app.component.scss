@@ -43,8 +43,12 @@
     display: block;
     transition: 0.5s;
   }
-  .menu-item{
-   
+  .title{
+    margin-left: 0.5em;
+    font-family: monospace;
+    font-size:15pt;
+    font-weight: bold;
+    border-bottom: 3px #ffbb33 solid;
   }
   .menu-card:hover{
     transform: scale(1.1);
