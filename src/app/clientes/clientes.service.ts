@@ -19,7 +19,7 @@ export class clientesService {
   private token: string;
 
   constructor(private http: HttpClient) {
-    this.token = String(localStorage.getItem('token'));
+    this.token = JSON.parse(String(localStorage.getItem('token')));
     this.HEADER_BODY += this.token;
     this.HEADER_FULL = this.HEADER_FULL.set(this.HEADER_NAME, this.HEADER_BODY);
   }
