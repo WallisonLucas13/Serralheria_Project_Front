@@ -22,18 +22,12 @@ export class LoginComponent {
   }
 
   submit(){
-    this.service.sendLogin(this.form).pipe(
-      catchError(err => {
-        window.alert(err.status);
-        window.alert(err.body);
-        return of();
-      })
-    )
-    .subscribe((body) => {
-      localStorage.setItem("token", body.token);
-      window.alert("Success");
-      this.router.navigateByUrl("clientes");
-    });
+    this.service.sendLogin(this.form)
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
   }
-
 }

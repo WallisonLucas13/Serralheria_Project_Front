@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import axios from 'axios';
 import { AuthenticationResponse } from 'src/app/models/AuthenticationResponse';
 
 @Injectable({
@@ -16,6 +17,6 @@ export class LoginService {
    }
 
   sendLogin(form: FormGroup){
-    return this.http.post<AuthenticationResponse>(this.API_POST, form.value, {observe: 'body', headers: this.HEADER_FULL});
+    return axios.post<AuthenticationResponse>(this.API_POST, form.value);
   }
 }
