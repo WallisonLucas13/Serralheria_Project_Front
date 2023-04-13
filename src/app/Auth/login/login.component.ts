@@ -29,7 +29,7 @@ export class LoginComponent {
         this.router.navigateByUrl("clientes");
       }),
       catchError(err => {
-        console.log(err);
+        window.alert(err);
         return of();
       })
     ).subscribe(() => {});
