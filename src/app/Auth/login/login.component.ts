@@ -24,6 +24,8 @@ export class LoginComponent {
   submit(){
     this.service.sendLogin(this.form)
     .then(function (response) {
+      localStorage.setItem("token", response.data.token);
+      location.replace("clientes");
       console.log(response);
     })
     .catch(function (error) {
