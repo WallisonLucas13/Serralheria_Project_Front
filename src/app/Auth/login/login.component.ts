@@ -17,6 +17,15 @@ export class LoginComponent {
   hide: boolean = true;
 
   constructor(private service: LoginService, private router: Router, private toast: ToastrService) {
+
+    if(localStorage.getItem("token")){
+      this.toast.success("Suas Credenciais estão válidas!", "",{
+        timeOut: 2000,
+        positionClass: "toast-bottom-center"
+      })
+      setTimeout(() => router.navigateByUrl("clientes"),2000);
+    }
+
     this.form = new FormGroup({
       username: new FormControl("", Validators.required),
       password: new FormControl("", Validators.required)

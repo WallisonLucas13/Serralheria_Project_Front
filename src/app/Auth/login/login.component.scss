@@ -12,6 +12,7 @@
 .formCard{
     width: 40%;
     padding: 1.5em;
+    margin-bottom: 3em;
 }
 
 .toolbar-card{
@@ -37,11 +38,11 @@
 }
 .orMessage{
   color: #7b7b7b;
-  margin-top: 2em;
   margin-bottom: 1.5em;
 }
 .orMessage h1{
   font-size: 14pt;
+  border-bottom: 2px #ffbb33 solid;
 }
 
 @media screen and (max-width: 800px){
