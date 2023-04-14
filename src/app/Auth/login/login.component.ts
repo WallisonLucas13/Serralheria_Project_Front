@@ -24,19 +24,20 @@ export class LoginComponent {
 
   submit(){
     this.service.sendLogin(this.form)
-    .then(function (response) {
+    .then((response) => {
+      
       localStorage.setItem("token", response.data.token);
 
-      toastr.success("Entrou!", "", {
+      this.toast.success("Entrou!", "", {
         timeOut: 2000,
         positionClass: "toast-bottom-center"
       })
 
       location.replace("clientes");
     })
-    .catch(function () {
+    .catch(() => {
       
-      toastr.error("Credenciais Inválidas", "", {
+      this.toast.error("Credenciais Inválidas", "", {
         timeOut: 2000,
         positionClass: "toast-bottom-center"
       })
