@@ -10,12 +10,11 @@ export class AppComponent {
   title = 'clientes-crud';
 
   constructor(private route: Router){
-    /*
+
     const logged = localStorage.getItem("token");
     if(!logged){
       this.route.navigateByUrl("user/login");
     }
-    */
   }
 
   goHomePage(){

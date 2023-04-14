@@ -19,12 +19,10 @@ export class CadastroComponent {
 
   constructor(private service: CadastroService, private route: Router, private snack: MatSnackBar){
 
-     /*
     const logged = localStorage.getItem("token");
     if(!logged){
       this.route.navigateByUrl("user/login");
     }
-    */
 
     this.form = new FormGroup({
       nome: new FormControl("", [Validators.required]),

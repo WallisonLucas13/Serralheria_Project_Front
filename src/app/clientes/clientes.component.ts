@@ -17,12 +17,10 @@ export class clientesComponent {
   
   constructor(private service: clientesService, private route: Router, private snack: MatSnackBar){
 
-    /*
     const logged = localStorage.getItem("token");
     if(!logged){
       this.route.navigateByUrl("user/login");
     }
-    */
     
     this.clientes$ = service.getRequest().pipe(
       catchError(error => {

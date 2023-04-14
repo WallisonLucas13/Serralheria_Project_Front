@@ -27,12 +27,10 @@ export class clienteDetailsComponent {
 
   constructor(private service: clienteDetailsService,private cd: ChangeDetectorRef ,private route: Router, private snack: MatSnackBar){
 
-     /*
     const logged = localStorage.getItem("token");
     if(!logged){
       this.route.navigateByUrl("user/login");
     }
-    */
 
     const cliente = localStorage.getItem('clienteDetails');
     if(cliente){
