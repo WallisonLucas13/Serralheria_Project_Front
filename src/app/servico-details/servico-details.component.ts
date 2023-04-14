@@ -276,7 +276,7 @@ export class ServicoDetailsComponent {
 
         this.getMaoDeObra();
         setTimeout(() => this.toast.info("Você receberá um email com o orçamento, caso não receba verifique se informou um email correto e Tente Novamente!","",{
-          timeOut: 2000,
+          timeOut: 3000,
           positionClass: "toast-bottom-center"
         }),1000);
       }),
@@ -286,7 +286,7 @@ export class ServicoDetailsComponent {
           timeOut: 2000,
           positionClass: "toast-bottom-center"
         });
-        
+
         return of([]);
       })
 
