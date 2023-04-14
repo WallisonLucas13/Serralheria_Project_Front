@@ -32,10 +32,12 @@ export class ServicoDetailsComponent {
 
   constructor(private route: Router, private service: ServicoDetailsService, private snack: MatSnackBar){
 
+    /*
     const logged = localStorage.getItem("token");
     if(!logged){
       this.route.navigateByUrl("user/login");
     }
+    */
 
     const servico = localStorage.getItem("servicoDetails");
     const cliente = localStorage.getItem("clienteDetails");
