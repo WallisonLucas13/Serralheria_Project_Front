@@ -41,13 +41,13 @@
   border-bottom: 3px #ffbb33 solid;
 }
   
-
 ::ng-deep .fail{
   color: black !important;
   background-color: red !important;
 }
 
 @media screen and (max-width: 620px){
+
   .navContent{
     position: sticky;
     z-index: 1000;
@@ -60,13 +60,13 @@
   .menu-card{
     display: block;
     transition: 0.5s;
-    margin-left: 1.5em;
   }
   .title{
     font-family: monospace;
     font-size:15pt;
     font-weight: bold;
     border-bottom: 3px #ffbb33 solid;
+    margin-left: 0;
   }
   .menu-card:hover{
     transform: scale(1.1);
