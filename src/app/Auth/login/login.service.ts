@@ -10,6 +10,7 @@ import { AuthenticationResponse } from 'src/app/models/AuthenticationResponse';
 export class LoginService {
 
   private API_POST: string  = "https://serralheriaproject-production.up.railway.app/api/login";
+  private API_POST_ACCESS: string  = "https://serralheriaproject-production.up.railway.app/api/login/access";
   private HEADER_FULL: HttpHeaders = new HttpHeaders();
 
   constructor(private http: HttpClient) {
@@ -18,5 +19,9 @@ export class LoginService {
 
   sendLogin(form: FormGroup){
     return axios.post<AuthenticationResponse>(this.API_POST, form.value);
+  }
+
+  sendLoginWithToken(form: FormGroup){
+    return axios.post(this.API_POST_ACCESS, form.value);
   }
 }

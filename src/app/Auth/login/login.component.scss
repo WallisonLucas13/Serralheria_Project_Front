@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 6em;
+    flex-direction: column;
 }
 .example-spacer {
     flex: 1 1 auto;
@@ -34,11 +35,19 @@
     background-color: #222;
     color: #ffbb33;
 }
+.orMessage{
+  color: #7b7b7b;
+  margin-top: 2em;
+  margin-bottom: 1.5em;
+}
+.orMessage h1{
+  font-size: 14pt;
+}
 
 @media screen and (max-width: 800px){
     .formCard{
       width: 80%;
-      margin: 4em auto;
+      margin: 2em auto;
       text-align: center;
   }
   }

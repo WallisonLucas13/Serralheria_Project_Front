@@ -31,4 +31,31 @@
 
     </mat-card>
 
+    <div class="orMessage">
+        <h1>Ou Entre com seu Acesso:</h1>
+    </div>
+
+    <mat-card class="formCard">
+
+        <mat-toolbar class="toolbar-card">
+            <span>Login</span>
+            <span class="example-spacer"></span>
+            <mat-icon>login</mat-icon>
+        </mat-toolbar>
+
+        <form [formGroup]="formToken">
+
+            <mat-form-field appearance="fill" class="contentInput">
+                <mat-label>Acesso</mat-label>
+                <textarea matInput formControlName="token"></textarea>
+            </mat-form-field>
+
+            <div class="contentButton">
+                <button mat-stroked-button (click)="submitToken()">Entrar</button>
+            </div>
+
+        </form>
+
+    </mat-card>
+
 </div>
