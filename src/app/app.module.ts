@@ -29,6 +29,7 @@ import { ServicoDetailsComponent } from './servico-details/servico-details.compo
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatMenuModule} from '@angular/material/menu';
 import { LoginComponent } from './Auth/login/login.component';
+import { ToastrModule } from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { LoginComponent } from './Auth/login/login.component';
     MatProgressBarModule,
     MatExpansionModule,
     MatCheckboxModule,
-    MatMenuModule
+    MatMenuModule,
+    ToastrModule.forRoot(),
     
   ],
   providers: [],
