@@ -20,7 +20,7 @@ export class LoginComponent {
       password: new FormControl("", Validators.required)
     });
 
-    localStorage.setItem("token", "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJXZWxsaW5ndG9uIiwiaWF0IjoxNjgxNDM0ODc3LCJleHAiOjE2ODE1MjEyNzd9.AoNypE_T74e6RMs2cCJ2sx0EpbRuQNhemukrJWIc9tE");
+    //localStorage.setItem("token", "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJXZWxsaW5ndG9uIiwiaWF0IjoxNjgxNDM0ODc3LCJleHAiOjE2ODE1MjEyNzd9.AoNypE_T74e6RMs2cCJ2sx0EpbRuQNhemukrJWIc9tE");
   }
 
   submit(){
