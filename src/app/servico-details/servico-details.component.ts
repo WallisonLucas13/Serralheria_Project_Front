@@ -7,6 +7,7 @@ import { ValoresServico } from '../models/ValoresServico';
 import { Material } from '../models/material';
 import { Servico } from '../models/servico';
 import { ServicoDetailsService } from './servico-details.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-servico-details',
@@ -30,7 +31,7 @@ export class ServicoDetailsComponent {
   servicoDetails: Servico | undefined;
   servicoDetailsList: Servico[] = [];
 
-  constructor(private route: Router, private service: ServicoDetailsService, private snack: MatSnackBar){
+  constructor(private route: Router, private service: ServicoDetailsService, private toast: ToastrService){
 
     const logged = localStorage.getItem("token");
     if(!logged){
@@ -93,13 +94,20 @@ export class ServicoDetailsComponent {
     this.service.sendDeleteMaterial(id).pipe(
 
       map(() => {
-        this.snack.open("Material Apagado!", "Sucess!")._dismissAfter(1000);
+        this.toast.success("Material Apagado!", "Sucess!",{
+          timeOut: 1000,
+          positionClass: "toast-bottom-center"
+        });
+
         this.getMateriais();
         this.getMaoDeObra();
       }),
 
       catchError(() => {
-        this.snack.open("Erro! Tente Novamente mais tarde!", "Fail!")._dismissAfter(2000);
+        this.toast.error("Erro! Tente Novamente mais tarde!", "Fail!",{
+          timeOut: 2000,
+          positionClass: "toast-bottom-center"
+        });
         return of([]);
       })
     ).subscribe(() => {});;
@@ -108,20 +116,31 @@ export class ServicoDetailsComponent {
   submitServico(){
 
     if(this.formServico.get('nome')?.invalid || this.formServico.get('desc')?.invalid){
-      this.snack.open("Campos Vazios! Tente Novamente!", "Fail!")._dismissAfter(1500);
+      this.toast.warning("Campos Vazios! Tente Novamente!", "Fail!",{
+        timeOut: 2000,
+        positionClass: "toast-bottom-center"
+      });
+
       return;
     }
     
     this.service.sendPutRequest(this.formServico, this.servicoDetails?.id).pipe(
       
-      map(response => {
-        this.snack.open("Serviço Atualizado com Sucesso!", "Sucess!")._dismissAfter(2000);
-        this.formServico.reset(this.formServico);
-        this.route.navigateByUrl('cliente/details')
+      map(() => {
+        this.toast.success("Serviço Atualizado com Sucesso!", "Sucess!",{
+          timeOut: 1000,
+          positionClass: "toast-bottom-center"
+        });
+        
+        setTimeout(() => this.route.navigateByUrl('cliente/details'),1000);
       }),
 
-      catchError(error => {
-        this.snack.open("Serviço Existente, Altere os campos!", "Fail!")._dismissAfter(2000);
+      catchError(() => {
+        this.toast.error("Serviço Existente, Altere os campos!", "Fail!",{
+          timeOut: 2000,
+          positionClass: "toast-bottom-center"
+        });
+
         return of([]);
       })
 
@@ -132,21 +151,32 @@ export class ServicoDetailsComponent {
   submitMaterial(){
 
     if(this.formMaterial.get('nome')?.invalid || this.formMaterial.get('valor')?.invalid || this.formMaterial.get('quant')?.invalid){
-      this.snack.open("Campos Vazios! Tente Novamente!", "Fail!")._dismissAfter(1500);
+      this.toast.warning("Campos Vazios! Tente Novamente!", "Fail!",{
+        timeOut: 2000,
+        positionClass: "toast-bottom-center"
+      });
       return;
     }
     
     this.service.sendNewMaterial(this.formMaterial, this.servicoDetails?.id).pipe(
       
       map(() => {
-        this.snack.open("Material Adicionado com Sucesso!", "Sucess!")._dismissAfter(2000);
+        this.toast.success("Material Adicionado com Sucesso!", "Sucess!",{
+          timeOut: 1000,
+          positionClass: "toast-bottom-center"
+        });
+
         this.formMaterial.reset(this.formMaterial);
         this.getMateriais();
         this.getMaoDeObra();
       }),
 
       catchError(() => {
-        this.snack.open("Material Existente, Altere os campos!", "Fail!")._dismissAfter(2000);
+        this.toast.error("Material Existente, Altere os campos!", "Fail!",{
+          timeOut: 2000,
+          positionClass: "toast-bottom-center"
+        });
+
         return of([]);
       })
 
@@ -161,19 +191,30 @@ export class ServicoDetailsComponent {
   submitMaoDeObra(){
 
     if(this.formServicoMaoDeObra.get('valor')?.invalid){
-      this.snack.open("Campo Vazio! Tente Novamente!", "Fail!")._dismissAfter(1500);
+      this.toast.warning("Campos Vazios! Tente Novamente!", "Fail!",{
+        timeOut: 2000,
+        positionClass: "toast-bottom-center"
+      });
       return;
     }
 
     this.service.sendPutMaoDeOBra(this.formServicoMaoDeObra,this.servicoDetails?.id).pipe(
       
       map(() => {
-        this.snack.open("Mão De Obra Atualizada com Sucesso!", "Sucess!")._dismissAfter(2000);
+        this.toast.success("Mão De Obra Atualizada com Sucesso!", "Sucess!",{
+          timeOut: 1000,
+          positionClass: "toast-bottom-center"
+        });
+
         this.getMaoDeObra();
       }),
 
       catchError(() => {
-        this.snack.open("Problemas com o servidor, Tente Novamente!", "Fail!")._dismissAfter(2000);
+        this.toast.error("Problemas com o servidor, Tente Novamente!", "Fail!",{
+          timeOut: 2000,
+          positionClass: "toast-bottom-center"
+        });
+
         return of([]);
       })
 
@@ -183,19 +224,30 @@ export class ServicoDetailsComponent {
   submitDesconto(){
 
     if(this.descontoForm.get('porcentagem')?.invalid){
-      this.snack.open("Campo Vazio! Tente Novamente!", "Fail!")._dismissAfter(1500);
+      this.toast.warning("Campos Vazio! Tente Novamente!", "Fail!",{
+        timeOut: 2000,
+        positionClass: "toast-bottom-center"
+      });
       return;
     }
 
     this.service.sendPutDesconto(this.servicoDetails?.id, this.descontoForm).pipe(
       
       map(() => {
-        this.snack.open("Desconto aplicado com Sucesso!", "Sucess!")._dismissAfter(2000);
+        this.toast.success("Desconto aplicado com Sucesso!", "Sucess!",{
+          timeOut: 1000,
+          positionClass: "toast-bottom-center"
+        });
+
         this.getMaoDeObra();
       }),
 
       catchError(() => {
-        this.snack.open("Problemas com o servidor, Tente Novamente!", "Fail!")._dismissAfter(2000);
+        this.toast.error("Problemas com o servidor, Tente Novamente!", "Fail!",{
+          timeOut: 2000,
+          positionClass: "toast-bottom-center"
+        });
+
         return of([]);
       })
 
@@ -205,7 +257,10 @@ export class ServicoDetailsComponent {
   sendOrcamentoRequest(){
 
     if(this.formOrcamento.get('adress')?.invalid){
-      this.snack.open("Campo Vazio! Tente Novamente!", "Fail!")._dismissAfter(1500);
+      this.toast.warning("Campos Vazio! Tente Novamente!", "Fail!",{
+        timeOut: 2000,
+        positionClass: "toast-bottom-center"
+      });
       return;
     }
 
@@ -214,13 +269,24 @@ export class ServicoDetailsComponent {
     this.service.sendPostOrcamento(this.formOrcamento,this.servicoDetails?.id).pipe(
       
       map(() => {
-        this.snack.open("Orçamento gerado com Sucesso!", "Sucess!")._dismissAfter(2000);
+        this.toast.success("Orçamento gerado com Sucesso!", "Sucess!",{
+          timeOut: 1000,
+          positionClass: "toast-bottom-center"
+        });
+
         this.getMaoDeObra();
-        this.snack.open("Você receberá um email com o orçamento, caso não receba verifique se informou um email correto e Tente Novamente!", "OK");
+        setTimeout(() => this.toast.info("Você receberá um email com o orçamento, caso não receba verifique se informou um email correto e Tente Novamente!","",{
+          timeOut: 2000,
+          positionClass: "toast-bottom-center"
+        }),1000);
       }),
 
       catchError(() => {
-        this.snack.open("Problemas com o servidor, Tente Novamente!", "Fail!")._dismissAfter(2000);
+        this.toast.error("Problemas com o servidor, Tente Novamente!", "Fail!",{
+          timeOut: 2000,
+          positionClass: "toast-bottom-center"
+        });
+        
         return of([]);
       })
 

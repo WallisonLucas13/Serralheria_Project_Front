@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { catchError, map, Observable, of } from 'rxjs';
 import { cliente } from '../models/cliente';
 import { CadastroService } from './cadastro.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cadastro',
@@ -17,7 +18,7 @@ export class CadastroComponent {
   form: FormGroup;
   loading_template: boolean = false;
 
-  constructor(private service: CadastroService, private route: Router, private snack: MatSnackBar){
+  constructor(private service: CadastroService, private route: Router, private toast: ToastrService) {
 
     const logged = localStorage.getItem("token");
     if(!logged){
@@ -41,7 +42,10 @@ export class CadastroComponent {
     if(this.form.get('nome')?.invalid || this.form.get('tel')?.invalid ||
        this.form.get('bairro')?.invalid || this.form.get('endereco')?.invalid){
 
-        this.snack.open("Campos Vazios! Tente Novamente!", "Fail!")._dismissAfter(1500);
+        this.toast.warning("Campos Vazios! Tente Novamente!", "Fail!", {
+            timeOut: 2000,
+            positionClass: "toast-bottom-center"
+        })
         return;
     }
 
@@ -49,18 +53,28 @@ export class CadastroComponent {
 
     this.service.sendForm(this.form).pipe(
       
-      map(response => {
-        this.snack.open("Cliente Salvo com Sucesso!", "Sucess!")._dismissAfter(2000);
+      map(() => {
+
+        this.toast.success("Cliente Salvo com Sucesso!", "Sucess!", {
+          timeOut: 1000,
+          positionClass: "toast-bottom-center"
+        });
+
         this.form.reset(this.form);
-        this.route.navigateByUrl("clientes");
+        setTimeout(() => this.route.navigateByUrl("clientes"),1000);
       }),
 
-      catchError(error => {
-        this.snack.open("Cliente Existente, Altere os campos!", "Fail!")._dismissAfter(2000);
+      catchError(() => {
+
+        this.toast.error("Cliente Existente, Altere os campos!", "Fail!", {
+          timeOut: 2000,
+          positionClass: "toast-bottom-center"
+        });
+        
         return of([]);
       })
 
-    ).subscribe(response => { this.loading_template = false;});
+    ).subscribe(() => { this.loading_template = false;});
 
   }
 

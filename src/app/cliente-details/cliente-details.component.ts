@@ -9,6 +9,7 @@ import { Servico } from '../models/servico';
 import { clienteDetailsService } from './cliente-details.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { throwToolbarMixedModesError } from '@angular/material/toolbar';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cliente-details',
@@ -25,7 +26,8 @@ export class clienteDetailsComponent {
   clienteDetails: cliente | undefined;
   clienteDetailsList: cliente[] = []
 
-  constructor(private service: clienteDetailsService,private cd: ChangeDetectorRef ,private route: Router, private snack: MatSnackBar){
+  constructor(private service: clienteDetailsService,private cd: ChangeDetectorRef ,private route: Router, 
+    private toast:ToastrService){
 
     const logged = localStorage.getItem("token");
     if(!logged){
@@ -64,7 +66,11 @@ export class clienteDetailsComponent {
 
     this.servicos$ = this.service.getServicos(this.clienteDetails?.id).pipe(
       catchError(() => {
-        this.snack.open("Servidor Indisponível, Tente Novamente!", "Fail!")._dismissAfter(3000);
+        this.toast.error("Servidor Indisponível, Tente Novamente!","",{
+          timeOut: 2000,
+          positionClass: "toast-bottom-center"
+        });
+
         return of([]);
       })
     );
@@ -82,14 +88,19 @@ export class clienteDetailsComponent {
   deleteServico(id: number){
     this.service.deleteRequest(id).pipe(
 
-      map(response => {
-        console.log(response);
-        this.snack.open("Serviço Apagado!", "Sucess!")._dismissAfter(1000);
+      map(() => {
+        this.toast.success("Serviço Apagado!", "Sucess!",{
+          timeOut: 2000,
+          positionClass: "toast-bottom-center"
+        });
         this.getServicos();
       }),
 
       catchError(() => {
-        this.snack.open("Erro! Tente Novamente mais tarde!", "Fail!")._dismissAfter(2000);
+        this.toast.error("Erro! Tente Novamente mais tarde!", "Fail!",{
+          timeOut: 2000,
+          positionClass: "toast-bottom-center"
+        });
         return of([]);
       })
     ).subscribe(() => {});
@@ -98,21 +109,31 @@ export class clienteDetailsComponent {
   submit(){
 
       if(this.form_cliente?.get('nome')?.invalid || this.form_cliente?.get('tel')?.invalid){
-        this.snack.open("Campos Vazios! Tente Novamente!", "Fail!")._dismissAfter(1500);
+        this.toast.warning("Campos Vazios! Tente Novamente!", "Fail!",{
+          timeOut: 2000,
+          positionClass: "toast-bottom-center"
+        });
         return;
       }
   
       this.service.sendForm(this.clienteDetails?.id, this.form_cliente).pipe(
         map(() => {
-          this.snack.open("Cliente Editado com Sucesso!", "Sucess!")._dismissAfter(2000);
+          this.toast.success("Cliente Editado com Sucesso!", "Sucess!",{
+            timeOut: 1000,
+            positionClass: "toast-bottom-center"
+          });
+
           this.form_cliente.reset(this.form_cliente);
-          this.route.navigateByUrl('clientes');
+          setTimeout(() => this.route.navigateByUrl('clientes'),1000);
         }),
 
         catchError(error => {
 
           if(error.status == 400){
-            this.snack.open("Cliente Existente, Altere os campos!", "Fail!")._dismissAfter(2000);
+            this.toast.error("Cliente Existente, Altere os campos!", "Fail!", {
+              timeOut: 2000,
+              positionClass: "toast-bottom-center"
+            });
           }
           return of([]);
         })
@@ -122,20 +143,29 @@ export class clienteDetailsComponent {
   submitServico(){
 
     if(this.form_servico.get('nome')?.invalid || this.form_servico.get('desc')?.invalid){
-      this.snack.open("Campos Vazios! Tente Novamente!", "Fail!")._dismissAfter(1500);
+      this.toast.warning("Campos Vazios! Tente Novamente!", "Fail!",{
+        timeOut: 2000,
+        positionClass: "toast-bottom-center"
+      });
       return;
   }
 
     this.service.sendFormServico(this.form_servico, this.clienteDetails?.id).pipe(
       
       map(() => {
-        this.snack.open("Serviço Salvo com Sucesso!", "Sucess!")._dismissAfter(2000);
+        this.toast.success("Serviço salvo com Sucesso!", "Sucess!",{
+          timeOut: 1000,
+          positionClass: "toast-bottom-center"
+        });
         this.form_servico.reset(this.form_servico);
         this.getServicos();
       }),
 
       catchError(() => {
-        this.snack.open("Estamos enfrentando Problemas! Tente Novamente mais tarde!", "Fail!")._dismissAfter(2000);
+        this.toast.error("Estamos enfrentando Problemas! Tente Novamente mais tarde!", "Fail!", {
+          timeOut: 2000,
+          positionClass: "toast-bottom-center"
+        });
         return of([]);
       })
     ).subscribe({});

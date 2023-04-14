@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { catchError, map, Observable, of } from 'rxjs';
 import { cliente } from '../models/cliente';
 import { clientesService } from './clientes.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-clientes',
@@ -15,7 +16,7 @@ export class clientesComponent {
 
   clientes$: Observable<cliente[]>;
   
-  constructor(private service: clientesService, private route: Router, private snack: MatSnackBar){
+  constructor(private service: clientesService, private route: Router, private toast: ToastrService){
 
     const logged = localStorage.getItem("token");
     if(!logged){
@@ -23,8 +24,11 @@ export class clientesComponent {
     }
     
     this.clientes$ = service.getRequest().pipe(
-      catchError(error => {
-        this.snack.open("Servidor Indisponível, Tente Novamente!", "Fail!")._dismissAfter(3000);
+      catchError(() => {
+        this.toast.error("Servidor Indisponível, Tente Novamente!", "Fail!",{
+          timeOut: 2000,
+          positionClass: "toast-bottom-center"
+        });
         return of([]);
       })
     );
@@ -45,14 +49,21 @@ export class clientesComponent {
   deletecliente(id: number){
     this.service.deleteRequest(id).pipe(
 
-      map(response => {
-        console.log(response);
-        this.snack.open("Cliente Apagado!", "Sucess!")._dismissAfter(1000);
-        setTimeout(() => {location.reload()}, 1200);
+      map(() => {
+        this.toast.success("Cliente Apagado!", "Sucess!",{
+          timeOut: 1000,
+          positionClass: "toast-bottom-center"
+        });
+
+        setTimeout(() => {location.reload()}, 1000);
       }),
 
-      catchError(error => {
-        this.snack.open("Erro! Tente Novamente mais tarde!", "Fail!")._dismissAfter(2000);
+      catchError(() => {
+        this.toast.error("Erro! Tente Novamente mais tarde!", "Fail!",{
+          timeOut: 2000,
+          positionClass: "toast-bottom-center"
+        });
+        
         return of([]);
       })
     ).subscribe(res => {});

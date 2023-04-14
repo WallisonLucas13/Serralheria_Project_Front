@@ -29,11 +29,11 @@ export class LoginComponent {
       localStorage.setItem("token", response.data.token);
 
       this.toast.success("Entrou!", "", {
-        timeOut: 2000,
+        timeOut: 1000,
         positionClass: "toast-bottom-center"
       })
 
-      location.replace("clientes");
+      setTimeout(() => location.replace("clientes"), 1000);
     })
     .catch(() => {
       
