@@ -58,11 +58,23 @@ export class clientesComponent {
         setTimeout(() => {location.reload()}, 1000);
       }),
 
-      catchError(() => {
-        this.toast.error("Erro! Tente Novamente mais tarde!", "Fail!",{
-          timeOut: 2000,
-          positionClass: "toast-bottom-center"
-        });
+      catchError((err) => {
+
+        if(err.status === 403){
+          this.toast.warning("Acesso Expirado, Entre Novamente!", "",{
+            timeOut: 2000,
+            positionClass: "toast-bottom-center"
+          });
+
+          localStorage.clear();
+          setTimeout(() => {location.reload()}, 2000);
+        }
+        else{
+          this.toast.error("Servidor Indisponivel! Tente Novamente mais tarde!", "",{
+            timeOut: 2000,
+            positionClass: "toast-bottom-center"
+          });
+        }
         
         return of([]);
       })
