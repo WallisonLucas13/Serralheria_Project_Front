@@ -9,28 +9,41 @@
 }
 mat-card{
     width: 60%;
-    margin: 4em auto;
+    margin:auto;
     text-align: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 @media screen and (max-width: 800px){
   mat-card{
     width: 80%;
-    margin: 4em auto;
+    margin:auto;
     text-align: center;
 }
 }
 @media screen and (max-width: 600px){
   mat-card{
     width: 90%;
-    margin: 4em auto;
+    margin:auto;
     text-align: center;
+}
+.titleDesc h1{
+  font-size: 17pt;
+  font-weight: bold;
+  margin-bottom: 1.5em;
+  text-align: center;
+}
+
+.titleDesc p{
+  text-align: center;
+  color: #7b7b7b;
+  margin-bottom: 1.5em;
+  font-size: 14pt;
 }
 }
 @media screen and (max-width: 500px){
   mat-card{
-    width: 95%;
-    margin: 4em auto;
+    width: 100%;
+    margin:auto;
     text-align: center;
 }
 .example-full-width {
@@ -90,7 +103,6 @@ input::placeholder{
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 3em;
 }
 .titleDesc h1{
   font-size: 20pt;

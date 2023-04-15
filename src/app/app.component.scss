@@ -123,3 +123,27 @@
     transform: scale(1.1);
   }
 }
+
+.lineStyleContent{
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 2.5em;
+  padding-left: 20px;
+}
+.lineStyleContent h1{
+  border-top: 6px #ffbb33 solid;
+  color: transparent;
+  position: relative;
+}
+
+.lineEndStyleContent{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 6em;
+  padding-right: 20px;
+}
+.lineEndStyleContent h1{
+  border-top: 6px #ffbb33 solid;
+  color: transparent;
+  position: relative;
+}

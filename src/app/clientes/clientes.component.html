@@ -16,7 +16,7 @@
             
         </mat-toolbar>         
 
-        <div *ngIf="clientes$ | async as clientes; else loading">
+        <div *ngIf="clientes$ | async as clientes; else loading" style="overflow-x: auto;">
 
             <table mat-table [dataSource]="clientes" class="mat-elevation-z8">
 
