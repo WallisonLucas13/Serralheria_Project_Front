@@ -6,6 +6,7 @@ import { catchError, map, Observable, of } from 'rxjs';
 import { cliente } from '../models/cliente';
 import { clientesService } from './clientes.service';
 import { ToastrService } from 'ngx-toastr';
+import { LoginService } from '../Auth/login/login.service';
 
 @Component({
   selector: 'app-clientes',
@@ -16,21 +17,34 @@ export class clientesComponent {
 
   clientes$: Observable<cliente[]>;
   
-  constructor(private service: clientesService, private route: Router, private toast: ToastrService){
+  constructor(private service: clientesService, 
+    private route: Router, 
+    private toast: ToastrService,
+    private loginService: LoginService){
 
-    const logged = localStorage.getItem("token");
-    if(!logged){
-      this.route.navigateByUrl("user/login");
+    if(localStorage.getItem("token")){
+      this.loginService.sendLoginWithToken();
+    }else{
+      this.route.navigateByUrl("user/login")
     }
     
     this.clientes$ = service.getRequest().pipe(
-      catchError(() => {
-        this.toast.error("Servidor Indisponível, Tente Novamente!", "Fail!",{
-          timeOut: 2000,
-          positionClass: "toast-bottom-center"
-        });
+      catchError(err => {
+        if(err.status == 403){
+          this.toast.warning("Acesso Expirado, Entre Novamente!", "",{
+            timeOut: 2000,
+            positionClass: "toast-bottom-center"
+          });
+          setTimeout(() => this.route.navigateByUrl("user/login"),2000);
+        }
+        else{
+          this.toast.error("Servidor Indisponível, Tente Novamente!", "Fail!",{
+            timeOut: 2000,
+            positionClass: "toast-bottom-center"
+          });
+        }
         return of([]);
-      })
+        })
     );
   }
 
@@ -60,7 +74,7 @@ export class clientesComponent {
 
       catchError((err) => {
 
-        if(err.status === 403){
+        if(err == 403){
           this.toast.warning("Acesso Expirado, Entre Novamente!", "",{
             timeOut: 2000,
             positionClass: "toast-bottom-center"

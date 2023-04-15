@@ -8,6 +8,7 @@ import { Material } from '../models/material';
 import { Servico } from '../models/servico';
 import { ServicoDetailsService } from './servico-details.service';
 import { ToastrService } from 'ngx-toastr';
+import { LoginService } from '../Auth/login/login.service';
 
 @Component({
   selector: 'app-servico-details',
@@ -22,6 +23,7 @@ export class ServicoDetailsComponent {
   displayedColumnsMateriais: string[] = ['nome', 'quant', 'valor', 'delete'];
   formServico: FormGroup;
   formMaterial: FormGroup;
+  formVerifyLogged: FormGroup | undefined;
   descontoForm: FormGroup;
   materiais$: Observable<Material[]> | undefined;
   formServicoMaoDeObra: FormGroup;
@@ -31,13 +33,15 @@ export class ServicoDetailsComponent {
   servicoDetails: Servico | undefined;
   servicoDetailsList: Servico[] = [];
 
-  constructor(private route: Router, private service: ServicoDetailsService, private toast: ToastrService){
+  constructor(private route: Router, private service: ServicoDetailsService, private toast: ToastrService, 
+    private loginService: LoginService){
 
-    const logged = localStorage.getItem("token");
-    if(!logged){
-      this.route.navigateByUrl("user/login");
+    if(localStorage.getItem("token")){
+      this.loginService.sendLoginWithToken();
+    }else{
+      this.route.navigateByUrl("user/login")
     }
-
+    
     const servico = localStorage.getItem("servicoDetails");
     const cliente = localStorage.getItem("clienteDetails");
 

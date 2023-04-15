@@ -16,15 +16,7 @@ export class LoginComponent {
   formToken: FormGroup;
   hide: boolean = true;
 
-  constructor(private service: LoginService, private router: Router, private toast: ToastrService) {
-
-    if(localStorage.getItem("token")){
-      this.toast.success("Suas Credenciais estão válidas!", "",{
-        timeOut: 2000,
-        positionClass: "toast-bottom-center"
-      })
-      setTimeout(() => router.navigateByUrl("clientes"),2000);
-    }
+  constructor(private service: LoginService, private router: Router, private toast: ToastrService){
 
     this.form = new FormGroup({
       username: new FormControl("", Validators.required),
@@ -79,8 +71,7 @@ export class LoginComponent {
       return;
     }
 
-    this.service.sendLoginWithToken(this.formToken)
-    .then(() => {
+    this.service.sendLoginAccess(this.formToken).then(() => {
       
       localStorage.setItem("token", this.formToken.value.token);
 

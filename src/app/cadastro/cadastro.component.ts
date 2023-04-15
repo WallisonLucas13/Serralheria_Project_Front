@@ -7,6 +7,7 @@ import { catchError, map, Observable, of } from 'rxjs';
 import { cliente } from '../models/cliente';
 import { CadastroService } from './cadastro.service';
 import { ToastrService } from 'ngx-toastr';
+import { LoginService } from '../Auth/login/login.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -18,11 +19,15 @@ export class CadastroComponent {
   form: FormGroup;
   loading_template: boolean = false;
 
-  constructor(private service: CadastroService, private route: Router, private toast: ToastrService) {
+  constructor(private service: CadastroService, 
+    private route: Router, 
+    private toast: ToastrService,
+    private loginService: LoginService) {
 
-    const logged = localStorage.getItem("token");
-    if(!logged){
-      this.route.navigateByUrl("user/login");
+    if(localStorage.getItem("token")){
+      this.loginService.sendLoginWithToken();
+    }else{
+      this.route.navigateByUrl("user/login")
     }
 
     this.form = new FormGroup({

@@ -14,23 +14,10 @@ export class AppComponent {
   formVerifyLogged: FormGroup | undefined;
 
   constructor(private route: Router, private loginService: LoginService, private toast: ToastrService){
-
-    const logged = localStorage.getItem("token");
-    if(!logged){
-      this.route.navigateByUrl("user/login");
-    }
-    else{
-      this.formVerifyLogged = new FormGroup(
-        {token: new FormControl(logged)}
-      );
-      this.loginService.sendLoginWithToken(this.formVerifyLogged)
-        .catch(() => {
-          this.toast.warning("Acesso Expirado, Entre Novamente!", "",{
-            timeOut: 2000,
-            positionClass: "toast-bottom-center"
-          });
-          setTimeout(() => this.route.navigateByUrl("user/login"),2000);
-        })
+    if(localStorage.getItem("token")){
+      this.loginService.sendLoginWithToken();
+    }else{
+      this.route.navigateByUrl("user/login")
     }
   }
 

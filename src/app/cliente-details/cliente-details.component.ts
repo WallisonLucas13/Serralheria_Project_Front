@@ -10,6 +10,7 @@ import { clienteDetailsService } from './cliente-details.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 import { ToastrService } from 'ngx-toastr';
+import { LoginService } from '../Auth/login/login.service';
 
 @Component({
   selector: 'app-cliente-details',
@@ -26,12 +27,15 @@ export class clienteDetailsComponent {
   clienteDetails: cliente | undefined;
   clienteDetailsList: cliente[] = []
 
-  constructor(private service: clienteDetailsService,private cd: ChangeDetectorRef ,private route: Router, 
-    private toast:ToastrService){
+  constructor(private service: clienteDetailsService,
+    private route: Router, 
+    private toast: ToastrService,
+    private loginService: LoginService){
 
-    const logged = localStorage.getItem("token");
-    if(!logged){
-      this.route.navigateByUrl("user/login");
+    if(localStorage.getItem("token")){
+      this.loginService.sendLoginWithToken();
+    }else{
+      this.route.navigateByUrl("user/login")
     }
 
     const cliente = localStorage.getItem('clienteDetails');
