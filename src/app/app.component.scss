@@ -6,9 +6,19 @@
   }
 
 .navContent{
-  position: sticky;
+  position:sticky;
+  top: 0;
   z-index: 1000;
   border-bottom: 1px #7a7a7a solid;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title{
+  font-family: monospace;
+  font-size:15pt;
+  font-weight: bold;
+  border-bottom: 3px #ffbb33 solid;
 }
 
 .menu-card{
@@ -50,9 +60,12 @@
 
   .navContent{
     position: sticky;
+    top:0;
     z-index: 1000;
     border-bottom: 1px #7a7a7a solid;
-    padding: 2em;
+    padding: 1.8em;
+    display: flex;
+    justify-content: space-between;
   }
   .actions-nav{
     display: none;
@@ -66,7 +79,45 @@
     font-size:15pt;
     font-weight: bold;
     border-bottom: 3px #ffbb33 solid;
-    margin-left: 0;
+    position: relative;
+    right: 30px;
+  }
+  .menu-card:hover{
+    transform: scale(1.1);
+  }
+}
+
+@media screen and (max-width: 400px){
+
+  .navContent{
+    position: sticky;
+    top:0;
+    z-index: 1000;
+    border-bottom: 1px #7a7a7a solid;
+    padding: 1.8em;
+    display: flex;
+    justify-content: space-between;
+  }
+  .actions-nav{
+    display: none;
+  }
+  .menu-card{
+    display: block;
+    transition: 0.5s;
+    color: #ffbb33;
+    position: relative;
+    right: 45px;
+  }
+  .icon-menu{
+    font-size: 19pt;
+  }
+  .title{
+    font-family: monospace;
+    font-size:13pt;
+    font-weight: bold;
+    border-bottom: 3px #ffbb33 solid;
+    position: relative;
+    right: 50px;
   }
   .menu-card:hover{
     transform: scale(1.1);
