@@ -5,8 +5,7 @@
         <p>Gerencie seus clientes e seus serviços</p>
     </div>
 
-<mat-card>
-    <mat-card-content>
+<mat-card class="cardContent">
 
         <mat-toolbar class="toolbar-card">
 
@@ -16,22 +15,22 @@
             
         </mat-toolbar>         
 
-        <div *ngIf="clientes$ | async as clientes; else loading" style="overflow-x: auto;">
+        <div *ngIf="clientes$ | async as clientes; else loading" class="contentTable">
 
-            <table mat-table [dataSource]="clientes" class="mat-elevation-z8">
+            <table mat-table [dataSource]="clientes" class="mat-elevation-z8" style="background-color: #222;color: #f4f4f4;margin-bottom: 2em;">
 
                 <ng-container matColumnDef="nome">
-                    <th mat-header-cell *matHeaderCellDef>Nome</th>
-                    <td mat-cell *matCellDef="let cliente of clientes"> {{cliente.nome}} </td>
+                    <th mat-header-cell *matHeaderCellDef class="cellHeader">Nome</th>
+                    <td mat-cell *matCellDef="let cliente of clientes" class="cellBody"> {{cliente.nome}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="tel">
-                    <th mat-header-cell *matHeaderCellDef>Telefone</th>
-                    <td mat-cell *matCellDef="let cliente of clientes"> {{cliente.tel}} </td>
+                    <th mat-header-cell *matHeaderCellDef class="cellHeader">Telefone</th>
+                    <td mat-cell *matCellDef="let cliente of clientes" class="cellBody"> {{cliente.tel}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="edit">
-                    <th mat-header-cell *matHeaderCellDef>Editar</th>
+                    <th mat-header-cell *matHeaderCellDef class="cellHeader">Editar</th>
                     <td mat-cell *matCellDef="let cliente of clientes"> 
 
                         <button style="color: green" (click)="goEditPage(cliente)" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
@@ -42,7 +41,7 @@
                 </ng-container>
 
                 <ng-container matColumnDef="delete">
-                    <th mat-header-cell *matHeaderCellDef>Apagar</th>
+                    <th mat-header-cell *matHeaderCellDef class="cellHeader">Apagar</th>
                     <td mat-cell *matCellDef="let cliente of clientes"> 
 
                         <button style="color: #9f0601" (click)="deletecliente(cliente.id)" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
@@ -65,7 +64,6 @@
                 <mat-spinner></mat-spinner>
             </div>
         </ng-template>
-    </mat-card-content>
 
 </mat-card>
 

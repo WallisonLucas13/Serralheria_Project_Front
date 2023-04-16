@@ -32,7 +32,19 @@ mat-card{
 }
 .toolbar-card{
   border-bottom: 1px #7b7b7b solid;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
+  background-color: #ffbb33;
+  font-family: monospace;
+  color: #222;
+}
+.toolbar-card button{
+  border: 1px #222 solid;
+  transition: 0.2s;
+}
+.toolbar-card button:hover{
+  background-color: #222;
+  color: #ffbb33;
+  transform: scale(1.1);
 }
 
 mat-card mat-card-content{
@@ -59,6 +71,35 @@ mat-card mat-card-content{
 td, th {
   text-align: center !important;
   vertical-align: middle !important;
+}
+.cardContent{
+  background-color: #222;
+}
+.contentTable{
+  overflow-x: auto;
+  background-color: #222;
+}
+.contentTable::-webkit-scrollbar {
+  width: 10px; 
+}
+
+.contentTable::-webkit-scrollbar-track {
+  background-color: #222;
+  width: 10px;
+}
+
+.contentTable::-webkit-scrollbar-thumb {
+  background: #ffbb33;
+  border-radius: 5px;
+}
+
+.cellHeader{
+  color: #ffbb33;
+  font-family: monospace;
+  font-size: 13pt;
+}
+.cellBody{
+  color: #f4f4f4;
 }
 
 @media screen and (max-width: 560px) {
