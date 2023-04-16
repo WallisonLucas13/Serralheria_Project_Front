@@ -80,12 +80,11 @@ td, th {
   background-color: #222;
 }
 .contentTable::-webkit-scrollbar {
-  width: 10px; 
+  width: 15px; 
 }
 
 .contentTable::-webkit-scrollbar-track {
   background-color: #222;
-  width: 10px;
 }
 
 .contentTable::-webkit-scrollbar-thumb {
@@ -101,10 +100,15 @@ td, th {
 .cellBody{
   color: #f4f4f4;
 }
+@media screen and (max-width: 850px) {
+  mat-card{
+    width: 100%;
+  }
+}
 
 @media screen and (max-width: 560px) {
   mat-card{
-    width: 80%;
+    width: 100%;
     margin:auto;
     text-align: center;
 }
@@ -125,7 +129,7 @@ td, th {
 
 @media screen and (max-width: 500px) {
   mat-card{
-    width: 90%;
+    width: 100%;
     margin:auto;
     text-align: center;
 }
