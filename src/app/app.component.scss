@@ -13,13 +13,7 @@
   border-bottom: 1px #7a7a7a solid;
   display: flex;
   justify-content: space-between;
-}
-
-.title{
-  font-family: monospace;
-  font-size:15pt;
-  font-weight: bold;
-  border-bottom: 3px #ffbb33 solid;
+  background-color: #222;
 }
 
 .menu-card{
@@ -35,13 +29,12 @@
   margin-right: 0.5em;
   border: none;
   transition: 0.2s;
-  font-weight: bold;
+  color: #f4f4f4;
 }
 
 .actions-nav button:hover{
   transform: scale(1.1);
   color: #ffbb33;
-  font-weight: normal;
 }
 
 .title{
@@ -49,80 +42,13 @@
   font-family: monospace;
   font-size:15pt;
   font-weight: bold;
-  border-bottom: 3px #ffbb33 solid;
+  border-bottom: 3px #f4f4f4 solid;
+  color: #ffbb33;
 }
   
 ::ng-deep .fail{
   color: black !important;
   background-color: red !important;
-}
-
-@media screen and (max-width: 620px){
-
-  .navContent{
-    position: sticky;
-    top:0;
-    z-index: 1000;
-    border-bottom: 1px #7a7a7a solid;
-    padding: 1.8em;
-    display: flex;
-    justify-content: space-between;
-  }
-  .actions-nav{
-    display: none;
-  }
-  .menu-card{
-    display: block;
-    transition: 0.5s;
-  }
-  .title{
-    font-family: monospace;
-    font-size:15pt;
-    font-weight: bold;
-    border-bottom: 3px #ffbb33 solid;
-    position: relative;
-    right: 30px;
-  }
-  .menu-card:hover{
-    transform: scale(1.1);
-  }
-}
-
-@media screen and (max-width: 400px){
-
-  .navContent{
-    position: sticky;
-    top:0;
-    z-index: 1000;
-    border-bottom: 1px #7a7a7a solid;
-    padding: 1.8em;
-    display: flex;
-    justify-content: space-between;
-  }
-  .actions-nav{
-    display: none;
-  }
-  .menu-card{
-    display: block;
-    transition: 0.5s;
-    color: #ffbb33;
-    position: relative;
-    right: 45px;
-  }
-  .icon-menu{
-    font-size: 19pt;
-  }
-  .title{
-    font-family: monospace;
-    font-size:13pt;
-    font-weight: bold;
-    border-bottom: 3px #ffbb33 solid;
-    position: relative;
-    right: 50px;
-  }
-  .menu-card:hover{
-    transform: scale(1.1);
-  }
 }
 
 .lineStyleContent{
@@ -186,14 +112,107 @@
   font-size: 20pt;
 }
 .copyContent span span{
-  color: white;
+  color: #7b7b7b;
   font-family: monospace;
   font-size: 13pt;
 }
+@media screen and (max-width: 620px){
 
-@media screen and (max-width: 500px){
-  .footerContent{
-    background-color: #222;
-    font-size: 14pt;
+  .navContent{
+    position: sticky;
+    top:0;
+    z-index: 1000;
+    border-bottom: 1px #7a7a7a solid;
+    padding: 1.8em;
+    display: flex;
+    justify-content: space-between;
+  }
+  .actions-nav{
+    display: none;
+  }
+  .menu-card{
+    display: block;
+    transition: 0.5s;
+    color: #ffbb33;
+  }
+  .title{
+    font-family: monospace;
+    font-size:15pt;
+    font-weight: bold;
+    border-bottom: 3px #f4f4f4 solid;
+    color: #ffbb33;
+    position: relative;
+    right: 30px;
+  }
+  .menu-card:hover{
+    transform: scale(1.1);
+  }
+  .titleFooter h1{
+    color: #ffbb33;
+    font-family: monospace;
+    font-size: 13pt;
+  }
+  .copyContent span{
+    color: #ffbb33;
+    font-size: 17pt;
+  }
+  .copyContent span span{
+    color: #7b7b7b;
+    font-family: monospace;
+    font-size: 11pt;
   }
 }
+
+@media screen and (max-width: 400px){
+
+  .navContent{
+    position: sticky;
+    top:0;
+    z-index: 1000;
+    border-bottom: 1px #7a7a7a solid;
+    padding: 1.8em;
+    display: flex;
+    justify-content: space-between;
+  }
+  .actions-nav{
+    display: none;
+  }
+  .menu-card{
+    display: block;
+    transition: 0.5s;
+    color: #ffbb33;
+    position: relative;
+    right: 45px;
+  }
+  .icon-menu{
+    font-size: 19pt;
+  }
+  .title{
+    font-family: monospace;
+    font-size:13pt;
+    font-weight: bold;
+    border-bottom: 3px #f4f4f4 solid;
+    color: #ffbb33;
+    position: relative;
+    right: 50px;
+  }
+  .menu-card:hover{
+    transform: scale(1.1);
+  }
+  .titleFooter h1{
+    color: #ffbb33;
+    font-family: monospace;
+    font-size: 13pt;
+  }
+  .copyContent span{
+    color: #ffbb33;
+    font-size: 17pt;
+  }
+  .copyContent span span{
+    color: #7b7b7b;
+    font-family: monospace;
+    font-size: 11pt;
+  }
+}
+
+

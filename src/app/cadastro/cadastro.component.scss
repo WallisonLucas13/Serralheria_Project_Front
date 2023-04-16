@@ -13,6 +13,126 @@ mat-card{
     text-align: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
+.min-width{
+    width: 100%;
+    min-height: 150px;
+}
+.custom-snack-error{
+    color: red !important;
+    background-color: red !important;
+}
+.example-spacer {
+    flex: 1 1 auto;
+  }
+::ng-deep .fail{
+    color: black !important;
+    background-color: red !important;
+}
+
+.loading-spinner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+.example-form {
+    width: 100%;
+    background-color: #222;
+  }
+.example-form button{
+  background-color: #222;
+  color: #ffbb33;
+  border: 1px #ffbb33 solid;
+  margin-top: 1.5em;
+  transition: 0.2s;
+}
+.example-form button:hover{
+ transform: scale(1.1);
+ background-color: #ffbb33;
+ color: #222;
+}
+  
+.example-full-width {
+    width: 100%;
+    background-color:#222;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: start;
+    margin-bottom: 0.5em;
+  }
+.example-form input[type="text"], input[type="tel"]{
+  background-color: #222;
+  border-bottom: 1px white solid;
+  color: #f4f4f4;
+  padding: 1.5em;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.example-form input[type="text"]:focus, input[type="tel"]:focus{
+  background-color: #222;
+  border:none;
+  color: #f4f4f4;
+  border-bottom: 1px #ffbb33 solid;
+}
+.example-form mat-label{
+  background-color: #222;
+  margin-bottom: 0.5em;
+  border: none;
+  color: #f4f4f4;
+  margin-top: 1em;
+}
+.example-form input[type="text"]::placeholder,  input[type="tel"]::placeholder{
+  background-color: #222;
+  border: none;
+  color: #f4f4f4;
+}
+  
+  td {
+    padding-right: 8px;
+  }
+
+  .toolbar-card{
+    border-bottom: 1px #7b7b7b solid;
+    margin-bottom: 0.5em;
+    background-color: #ffbb33;
+    font-family: monospace;
+    color: #222;
+  }
+  .toolbar-card button{
+    border: 1px #222 solid;
+    transition: 0.2s;
+    color: #222;
+  }
+  .toolbar-card button:hover{
+    border: none;
+    background-color: #222;
+    color: #ffbb33;
+    transform: scale(1.1);
+  }
+  .formNew{
+    margin-top: 1em;
+    background-color: #222;
+    border: 1px #222 solid;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+
+.titleDesc{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.titleDesc h1{
+  font-size: 20pt;
+  font-weight: bold
+}
+.titleDesc p{
+  color: #7b7b7b;
+  margin-bottom: 1em;
+  font-size: 14pt;
+}
 @media screen and (max-width: 800px){
   mat-card{
     width: 80%;
@@ -49,66 +169,4 @@ mat-card{
   width: 100%;
   display: grid;
 }
-}
-.min-width{
-    width: 100%;
-    min-height: 150px;
-}
-.custom-snack-error{
-    color: red !important;
-    background-color: red !important;
-}
-.example-spacer {
-    flex: 1 1 auto;
-  }
-::ng-deep .fail{
-    color: black !important;
-    background-color: red !important;
-}
-
-.loading-spinner{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 25px;
-}
-.example-form {
-    width: 100%;
-  }
-  
-.example-full-width {
-    width: 100%;
-  }
-  
-  td {
-    padding-right: 8px;
-  }
-
-  .toolbar-card{
-    border-bottom: 1px #7b7b7b solid;
-    margin-bottom: 0.5em;
-  }
-
-input{
-   border-radius: 0;
-   border: none;
-}
-input::placeholder{
-  color: #7b7b7b;
-}
-
-.titleDesc{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.titleDesc h1{
-  font-size: 20pt;
-  font-weight: bold
-}
-.titleDesc p{
-  color: #7b7b7b;
-  margin-bottom: 1em;
-  font-size: 14pt;
 }

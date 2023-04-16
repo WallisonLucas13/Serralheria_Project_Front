@@ -19,33 +19,35 @@
 
         <form [formGroup]="form" class="example-form">
 
-            <mat-form-field appearance="fill" class="example-full-width">
-                <mat-label>Nome</mat-label>
-                <input type="text" matInput placeholder="Nome" formControlName="nome" required>
-            </mat-form-field>
-
             <table class="example-full-width" cellspacing="0">
-                <tr>
+                <tr style="display: flex;flex-wrap: wrap;">
 
-                    <td><mat-form-field appearance="fill" class="example-full-width">
+                    <td>
+                        <div class="example-full-width">
+                            <mat-label>Nome</mat-label>
+                            <input type="text" matInput placeholder="Insira o nome do cliente" formControlName="nome" required>
+                        </div>
+                    </td>
+
+                    <td><div class="example-full-width">
                             <mat-label>Telefone</mat-label>
                             <input type="tel" matInput placeholder="Telefone" formControlName="tel" required>
-                        </mat-form-field></td>
+                    </div></td>
 
-                    <td><mat-form-field appearance="fill" class="example-full-width">
+                    <td><div class="example-full-width">
                             <mat-label>Bairro</mat-label>
                             <input type="text" matInput placeholder="Bairro" formControlName="bairro" required>
-                        </mat-form-field></td>
+                    </div></td>
 
                     <div *ngIf="!loading_template; else loading"></div>
 
                 </tr>
             </table>
 
-            <mat-form-field appearance="fill" class="example-full-width">
+            <div class="example-full-width">
                 <mat-label>Endereço</mat-label>
                 <input type="text" matInput placeholder="Endereço" formControlName="endereco" required>
-            </mat-form-field>
+            </div>
 
             <button mat-stroked-button (click)="submit()">Cadastrar</button>
 
