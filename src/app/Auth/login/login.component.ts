@@ -19,6 +19,11 @@ export class LoginComponent {
     private router: Router, 
     private toast: ToastrService){
 
+      this.toast.info("Realize Login para ter acesso ao Sistema!","",{
+        positionClass: "toast-top-right",
+        timeOut: 3000
+      })
+
     this.form = new FormGroup({
       username: new FormControl("", Validators.required),
       password: new FormControl("", Validators.required)
