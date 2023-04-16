@@ -1,7 +1,9 @@
-<mat-toolbar class="navContent">
+<div style="display: flex;flex-direction: column;min-height: 100%;">
+  <div style="flex: 1;">
+    <mat-toolbar class="navContent">
 
       <span class="title">Serralheria Pontualidade</span>
-      
+
       <div class="actions-nav">
         <button (click)="goHomePage()" mat-stroked-button>Home</button>
 
@@ -20,26 +22,46 @@
             <mat-icon>home</mat-icon>
             <span>Home</span>
           </button>
-          <button mat-menu-item  class="menu-item" (click)="goCursosPage()">
+          <button mat-menu-item class="menu-item" (click)="goCursosPage()">
             <mat-icon>list</mat-icon>
             <span>Clientes</span>
           </button>
-          <button mat-menu-item  class="menu-item" (click)="goCadastroPage()">
+          <button mat-menu-item class="menu-item" (click)="goCadastroPage()">
             <mat-icon>add</mat-icon>
             <span>Cadastrar Cliente</span>
           </button>
         </mat-menu>
       </div>
 
-</mat-toolbar>
+    </mat-toolbar>
 
-<div class="lineStyleContent">
-  <h1>-----------</h1>
+    <div class="lineStyleContent">
+      <h1>-----------</h1>
+    </div>
+
+    <router-outlet></router-outlet>
+
+    <div class="lineEndStyleContent">
+      <h1>-----------</h1>
+    </div>
+
+  </div>
+
+  <footer class="footerContent">
+
+    <div class="titleFooter">
+      <h1>Entre em contato com a Empresa</h1>
+    </div>
+
+    <div class="iconsContacts">
+     <a href="mailto:pontualidade.pontualidade@gmail.com"><i class="bi bi-google" style="color: #dd4b39;font-size: 25pt;"></i></a>
+     <a href="https://wa.me/5534988483279?text=Voc%C3%AA+est%C3%A1+quase+l%C3%A1%21"><i class="bi bi-whatsapp" style="color: #25d366;font-size: 25pt;"></i></a>
+    </div>
+
+    <div class="copyContent">
+      <span>&copy; <span>Serralheria Qualidade e Pontualidade</span></span>
+    </div>
+
+  </footer>
+
 </div>
-
-<router-outlet></router-outlet>
-
-<div class="lineEndStyleContent">
-  <h1>-----------</h1>
-</div>
-

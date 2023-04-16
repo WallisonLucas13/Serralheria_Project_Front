@@ -1,5 +1,6 @@
 // regular style toast
 @import 'ngx-toastr/toastr';
+@import "~bootstrap-icons/font/bootstrap-icons.css";
 
 .example-spacer {
     flex: 1 1 auto;
@@ -146,4 +147,46 @@
   border-top: 6px #ffbb33 solid;
   color: transparent;
   position: relative;
+}
+
+.footerContent{
+  background-color: #222;
+}
+.titleFooter{
+  text-align: center;
+  margin-top: 1.5em;
+}
+.titleFooter h1{
+  color: #ffbb33;
+  font-family: monospace;
+  font-size: 16pt;
+}
+.iconsContacts{
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 2em;
+  margin-bottom: 3em
+}
+.iconsContacts:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.copyContent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1.5em;
+}
+.copyContent span{
+  color: #ffbb33;
+  font-size: 20pt;
+}
+.copyContent span span{
+  color: white;
+  font-family: monospace;
+  font-size: 13pt;
 }

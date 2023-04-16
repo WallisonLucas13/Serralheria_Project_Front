@@ -64,8 +64,7 @@ import { ToastrModule } from "ngx-toastr";
     MatExpansionModule,
     MatCheckboxModule,
     MatMenuModule,
-    ToastrModule.forRoot(),
-    
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
