@@ -98,7 +98,7 @@ export class ServicoDetailsComponent {
     this.service.sendDeleteMaterial(id).pipe(
 
       map(() => {
-        this.toast.success("Material Apagado!", "Sucess!",{
+        this.toast.success("Material Apagado!", "",{
           timeOut: 1000,
           positionClass: "toast-bottom-center"
         });
@@ -108,7 +108,7 @@ export class ServicoDetailsComponent {
       }),
 
       catchError(() => {
-        this.toast.error("Erro! Tente Novamente mais tarde!", "Fail!",{
+        this.toast.error("Erro! Tente Novamente mais tarde!", "",{
           timeOut: 2000,
           positionClass: "toast-bottom-center"
         });
@@ -120,7 +120,7 @@ export class ServicoDetailsComponent {
   submitServico(){
 
     if(this.formServico.get('nome')?.invalid || this.formServico.get('desc')?.invalid){
-      this.toast.warning("Campos Vazios! Tente Novamente!", "Fail!",{
+      this.toast.warning("Campos Vazios! Tente Novamente!", "",{
         timeOut: 2000,
         positionClass: "toast-bottom-center"
       });
@@ -131,7 +131,7 @@ export class ServicoDetailsComponent {
     this.service.sendPutRequest(this.formServico, this.servicoDetails?.id).pipe(
       
       map(() => {
-        this.toast.success("Serviço Atualizado com Sucesso!", "Sucess!",{
+        this.toast.success("Serviço Atualizado com Sucesso!", "",{
           timeOut: 1000,
           positionClass: "toast-bottom-center"
         });
@@ -140,7 +140,7 @@ export class ServicoDetailsComponent {
       }),
 
       catchError(() => {
-        this.toast.error("Serviço Existente, Altere os campos!", "Fail!",{
+        this.toast.error("Serviço Existente, Altere os campos!", "",{
           timeOut: 2000,
           positionClass: "toast-bottom-center"
         });
@@ -155,7 +155,7 @@ export class ServicoDetailsComponent {
   submitMaterial(){
 
     if(this.formMaterial.get('nome')?.invalid || this.formMaterial.get('valor')?.invalid || this.formMaterial.get('quant')?.invalid){
-      this.toast.warning("Campos Vazios! Tente Novamente!", "Fail!",{
+      this.toast.warning("Campos Vazios! Tente Novamente!", "",{
         timeOut: 2000,
         positionClass: "toast-bottom-center"
       });
@@ -165,7 +165,7 @@ export class ServicoDetailsComponent {
     this.service.sendNewMaterial(this.formMaterial, this.servicoDetails?.id).pipe(
       
       map(() => {
-        this.toast.success("Material Adicionado com Sucesso!", "Sucess!",{
+        this.toast.success("Material Adicionado com Sucesso!", "",{
           timeOut: 1000,
           positionClass: "toast-bottom-center"
         });
@@ -176,7 +176,7 @@ export class ServicoDetailsComponent {
       }),
 
       catchError(() => {
-        this.toast.error("Material Existente, Altere os campos!", "Fail!",{
+        this.toast.error("Material Existente, Altere os campos!", "",{
           timeOut: 2000,
           positionClass: "toast-bottom-center"
         });
@@ -195,7 +195,7 @@ export class ServicoDetailsComponent {
   submitMaoDeObra(){
 
     if(this.formServicoMaoDeObra.get('valor')?.invalid){
-      this.toast.warning("Campos Vazios! Tente Novamente!", "Fail!",{
+      this.toast.warning("Campos Vazios! Tente Novamente!", "",{
         timeOut: 2000,
         positionClass: "toast-bottom-center"
       });
@@ -205,7 +205,7 @@ export class ServicoDetailsComponent {
     this.service.sendPutMaoDeOBra(this.formServicoMaoDeObra,this.servicoDetails?.id).pipe(
       
       map(() => {
-        this.toast.success("Mão De Obra Atualizada com Sucesso!", "Sucess!",{
+        this.toast.success("Mão De Obra Atualizada com Sucesso!", "",{
           timeOut: 1000,
           positionClass: "toast-bottom-center"
         });
@@ -214,7 +214,7 @@ export class ServicoDetailsComponent {
       }),
 
       catchError(() => {
-        this.toast.error("Problemas com o servidor, Tente Novamente!", "Fail!",{
+        this.toast.error("Problemas com o servidor, Tente Novamente!", "",{
           timeOut: 2000,
           positionClass: "toast-bottom-center"
         });
@@ -228,7 +228,7 @@ export class ServicoDetailsComponent {
   submitDesconto(){
 
     if(this.descontoForm.get('porcentagem')?.invalid){
-      this.toast.warning("Campos Vazio! Tente Novamente!", "Fail!",{
+      this.toast.warning("Campos Vazio! Tente Novamente!", "",{
         timeOut: 2000,
         positionClass: "toast-bottom-center"
       });
@@ -238,7 +238,7 @@ export class ServicoDetailsComponent {
     this.service.sendPutDesconto(this.servicoDetails?.id, this.descontoForm).pipe(
       
       map(() => {
-        this.toast.success("Desconto aplicado com Sucesso!", "Sucess!",{
+        this.toast.success("Desconto aplicado com Sucesso!", "",{
           timeOut: 1000,
           positionClass: "toast-bottom-center"
         });
@@ -247,7 +247,7 @@ export class ServicoDetailsComponent {
       }),
 
       catchError(() => {
-        this.toast.error("Problemas com o servidor, Tente Novamente!", "Fail!",{
+        this.toast.error("Problemas com o servidor, Tente Novamente!", "",{
           timeOut: 2000,
           positionClass: "toast-bottom-center"
         });
@@ -261,7 +261,7 @@ export class ServicoDetailsComponent {
   sendOrcamentoRequest(){
 
     if(this.formOrcamento.get('adress')?.invalid){
-      this.toast.warning("Campos Vazio! Tente Novamente!", "Fail!",{
+      this.toast.warning("Campos Vazio! Tente Novamente!", "",{
         timeOut: 2000,
         positionClass: "toast-bottom-center"
       });
@@ -273,7 +273,7 @@ export class ServicoDetailsComponent {
     this.service.sendPostOrcamento(this.formOrcamento,this.servicoDetails?.id).pipe(
       
       map(() => {
-        this.toast.success("Orçamento gerado com Sucesso!", "Sucess!",{
+        this.toast.success("Orçamento gerado com Sucesso!", "",{
           timeOut: 1000,
           positionClass: "toast-bottom-center"
         });
@@ -286,7 +286,7 @@ export class ServicoDetailsComponent {
       }),
 
       catchError(() => {
-        this.toast.error("Problemas com o servidor, Tente Novamente!", "Fail!",{
+        this.toast.error("Problemas com o servidor, Tente Novamente!", "",{
           timeOut: 2000,
           positionClass: "toast-bottom-center"
         });
@@ -295,6 +295,10 @@ export class ServicoDetailsComponent {
       })
 
     ).subscribe(() => {this.loading_template = false;});
+  }
+
+  backPage(){
+    this.route.navigateByUrl('cliente/details');
   }
 
 

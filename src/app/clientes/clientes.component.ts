@@ -15,7 +15,7 @@ import { LoginService } from '../Auth/login/login.service';
 })
 export class clientesComponent {
 
-  clientes$: Observable<cliente[]>;
+  clientes$: Observable<cliente[]> | undefined;
   
   constructor(private service: clientesService, 
     private route: Router, 
@@ -27,25 +27,21 @@ export class clientesComponent {
     }else{
       this.route.navigateByUrl("user/login")
     }
-    
-    this.clientes$ = service.getRequest().pipe(
-      catchError(err => {
-        if(err.status == 403){
-          this.toast.warning("Acesso Expirado, Entre Novamente!", "",{
-            timeOut: 2000,
-            positionClass: "toast-bottom-center"
-          });
-          setTimeout(() => this.route.navigateByUrl("user/login"),2000);
-        }
-        else{
-          this.toast.error("Servidor Indisponível, Tente Novamente!", "Fail!",{
-            timeOut: 2000,
-            positionClass: "toast-bottom-center"
-          });
-        }
+
+    this.getClientes();
+  }
+
+  getClientes(){
+    this.clientes$ = this.service.getRequest().pipe(
+      catchError(() => {
+        this.toast.warning("Acesso Expirado, Entre Novamente!", "",{
+          timeOut: 2000,
+          positionClass: "toast-bottom-center"
+        });
+        setTimeout(() => this.route.navigateByUrl("user/login"),2000);
         return of([]);
-        })
-    );
+      })
+    )
   }
 
   goHomePage(){
@@ -64,35 +60,28 @@ export class clientesComponent {
     this.service.deleteRequest(id).pipe(
 
       map(() => {
-        this.toast.success("Cliente Apagado!", "Sucess!",{
-          timeOut: 1000,
+        this.toast.success("Cliente Apagado!", "",{
+          timeOut: 2000,
           positionClass: "toast-bottom-center"
         });
 
-        setTimeout(() => {location.reload()}, 1000);
+        this.getClientes();
       }),
 
-      catchError((err) => {
+      catchError(() => {
 
-        if(err == 403){
-          this.toast.warning("Acesso Expirado, Entre Novamente!", "",{
-            timeOut: 2000,
-            positionClass: "toast-bottom-center"
-          });
-
-          localStorage.clear();
-          setTimeout(() => {location.reload()}, 2000);
-        }
-        else{
           this.toast.error("Servidor Indisponivel! Tente Novamente mais tarde!", "",{
             timeOut: 2000,
             positionClass: "toast-bottom-center"
           });
-        }
         
         return of([]);
       })
-    ).subscribe(res => {});
+    ).subscribe(() => {});
+  }
+
+  backPage(){
+    this.route.navigateByUrl('');
   }
 
   displayedColumns: string[] = ['nome', 'tel', 'edit', 'delete'];

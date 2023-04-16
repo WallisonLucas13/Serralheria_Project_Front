@@ -73,6 +73,8 @@
   border-top: 6px #ffbb33 solid;
   color: transparent;
   position: relative;
+  text-align: end;
+  margin-right: 0.5em;
 }
 
 .footerContent{
@@ -96,7 +98,7 @@
   margin-top: 2em;
   margin-bottom: 3em
 }
-.iconsContacts:hover{
+.iconsContacts a:hover{
   cursor: pointer;
   transform: scale(1.1);
 }

@@ -93,7 +93,7 @@ export class clienteDetailsComponent {
     this.service.deleteRequest(id).pipe(
 
       map(() => {
-        this.toast.success("Serviço Apagado!", "Sucess!",{
+        this.toast.success("Serviço Apagado!", "",{
           timeOut: 2000,
           positionClass: "toast-bottom-center"
         });
@@ -101,7 +101,7 @@ export class clienteDetailsComponent {
       }),
 
       catchError(() => {
-        this.toast.error("Erro! Tente Novamente mais tarde!", "Fail!",{
+        this.toast.error("Erro! Tente Novamente mais tarde!", "",{
           timeOut: 2000,
           positionClass: "toast-bottom-center"
         });
@@ -122,7 +122,7 @@ export class clienteDetailsComponent {
   
       this.service.sendForm(this.clienteDetails?.id, this.form_cliente).pipe(
         map(() => {
-          this.toast.success("Cliente Editado com Sucesso!", "Sucess!",{
+          this.toast.success("Cliente Editado com Sucesso!", "",{
             timeOut: 1000,
             positionClass: "toast-bottom-center"
           });
@@ -134,7 +134,7 @@ export class clienteDetailsComponent {
         catchError(error => {
 
           if(error.status == 400){
-            this.toast.error("Cliente Existente, Altere os campos!", "Fail!", {
+            this.toast.error("Cliente Existente, Altere os campos!", "", {
               timeOut: 2000,
               positionClass: "toast-bottom-center"
             });
@@ -157,7 +157,7 @@ export class clienteDetailsComponent {
     this.service.sendFormServico(this.form_servico, this.clienteDetails?.id).pipe(
       
       map(() => {
-        this.toast.success("Serviço salvo com Sucesso!", "Sucess!",{
+        this.toast.success("Serviço salvo com Sucesso!", "",{
           timeOut: 1000,
           positionClass: "toast-bottom-center"
         });
@@ -166,13 +166,17 @@ export class clienteDetailsComponent {
       }),
 
       catchError(() => {
-        this.toast.error("Estamos enfrentando Problemas! Tente Novamente mais tarde!", "Fail!", {
+        this.toast.error("Estamos enfrentando Problemas! Tente Novamente mais tarde!", "", {
           timeOut: 2000,
           positionClass: "toast-bottom-center"
         });
         return of([]);
       })
     ).subscribe({});
+  }
+
+  backPage(){
+    this.route.navigateByUrl("clientes");
   }
 
     displayedColumns: string[] = ['nome', 'desc', 'edit', 'delete'];

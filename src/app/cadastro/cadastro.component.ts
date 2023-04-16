@@ -60,7 +60,7 @@ export class CadastroComponent {
       
       map(() => {
 
-        this.toast.success("Cliente Salvo com Sucesso!", "Sucess!", {
+        this.toast.success("Cliente Salvo com Sucesso!", "", {
           timeOut: 1000,
           positionClass: "toast-bottom-center"
         });
@@ -81,6 +81,10 @@ export class CadastroComponent {
 
     ).subscribe(() => { this.loading_template = false;});
 
+  }
+
+  backPage(){
+    this.route.navigateByUrl("clientes");
   }
 
 }

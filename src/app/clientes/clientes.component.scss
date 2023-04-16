@@ -63,7 +63,6 @@ mat-card mat-card-content{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 25px;
 }
 .example-spacer {
   flex: 1 1 auto;
@@ -100,6 +99,27 @@ td, th {
 .cellBody{
   color: #f4f4f4;
 }
+.backPage{
+  display: flex;
+  font-size: 14pt;
+  margin-left: 0.5em;
+  bottom: 20px;
+  position: relative;
+}
+.backPage span{
+  color: #222;
+  border-bottom: 3px #ffbb33 solid;
+  margin-left: 0.5em;
+  cursor: pointer;
+  transition: 1.1;
+}
+.backPage span:hover{
+  color: gray;
+  border-bottom: 3px #ffbb33 solid;
+  margin-left: 0.5em;
+  cursor: pointer;
+  transform: scale(1.1);
+}
 @media screen and (max-width: 850px) {
   mat-card{
     width: 100%;
@@ -132,6 +152,12 @@ td, th {
     width: 100%;
     margin:auto;
     text-align: center;
+}
+.backPage{
+  display: flex;
+  font-size: 12pt;
+  bottom: 20px;
+  position: relative;
 }
 }
 

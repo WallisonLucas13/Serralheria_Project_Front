@@ -49,9 +49,12 @@ td, th {
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     margin-bottom: 2em;
+    background-color: #222;
+    color: #ffbb33;
 }
 .card-servico-content{
     width: 90%;
+    background-color: #222;
 }
 .form-servico-card{
     width: 60%;
@@ -60,6 +63,10 @@ td, th {
 
 .form-cliente{
     width: 60%;
+    margin-top: 1em;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 }
 .example-form {
     width: 100%;
@@ -95,9 +102,121 @@ td, th {
     font-size: 14pt;
   }
   .card-info{
-    width: 100%;
+    width: 60%;
     margin: auto;
   }
+  .contentTable{
+    overflow-x: auto;
+    background-color: #222;
+  }
+  .contentTable::-webkit-scrollbar {
+    width: 15px; 
+  }
+  
+  .contentTable::-webkit-scrollbar-track {
+    background-color: #222;
+  }
+  
+  .contentTable::-webkit-scrollbar-thumb {
+    background: #ffbb33;
+    border-radius: 5px;
+  }
+  .panelAll{
+    background-color: #222;
+  }
+
+  .cellHeader{
+    color: #ffbb33;
+    font-family: monospace;
+    font-size: 13pt;
+  }
+  .cellBody{
+    color: #f4f4f4;
+  }
+  .example-form {
+    width: 100%;
+    background-color: #222;
+    margin-top: 1em;
+  }
+.example-form button{
+  background-color: #222;
+  color: #ffbb33;
+  border: 1px #ffbb33 solid;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  transition: 0.2s;
+}
+.example-form button:hover{
+ transform: scale(1.1);
+ background-color: #ffbb33;
+ color: #222;
+}
+  
+.example-full-width {
+    width: 100%;
+    background-color:#222;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: start;
+    margin-bottom: 0.5em;
+  }
+.example-form input[type="text"], input[type="tel"],textarea{
+  background-color: #222;
+  border-bottom: 1px white solid;
+  color: #f4f4f4;
+  padding: 1.5em;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.example-form input[type="text"]:focus, input[type="tel"]:focus,textarea:focus{
+  background-color: #222;
+  border:none;
+  color: #f4f4f4;
+  border-bottom: 1px #ffbb33 solid;
+}
+.example-form mat-label{
+  background-color: #222;
+  margin-bottom: 0.5em;
+  border: none;
+  color: #f4f4f4;
+  margin-top: 1em;
+}
+.example-form input[type="text"]::placeholder,  input[type="tel"]::placeholder,textarea::placeholder{
+  background-color: #222;
+  border: none;
+  color: #7b7b7b;
+}
+.formInputsMovel{
+  display: flex;
+  flex-wrap: wrap;
+}
+.contentFormTitle{
+  display: flex;flex-wrap: wrap;justify-content: center;
+}
+
+.backPage{
+  display: flex;
+  font-size: 14pt;
+  margin-left: 0.5em;
+  bottom: 20px;
+  position: relative;
+}
+.backPage span{
+  color: #222;
+  border-bottom: 3px #ffbb33 solid;
+  margin-left: 0.5em;
+  cursor: pointer;
+  transition: 1.1;
+}
+.backPage span:hover{
+  color: gray;
+  border-bottom: 3px #ffbb33 solid;
+  margin-left: 0.5em;
+  cursor: pointer;
+  transform: scale(1.1);
+}
 
 @media screen and (max-width: 820px) {
     .descIcon{
@@ -113,10 +232,6 @@ td, th {
     .form-cliente{
         width: 80%;
     }
-    .example-full-width {
-        width: 100%;
-        display: grid;
-      }
 
 }
 
@@ -130,14 +245,6 @@ td, th {
     .form-cliente{
         width: 100%;
     }
-    .example-full-width {
-        width: 100%;
-        display: grid;
-      }
-    .formInputsMovel{
-        display: flex;
-        flex-direction: column;
-    }
 
       .card-servico-content{
         width: 100%;
@@ -146,7 +253,7 @@ td, th {
         flex-direction: column;
     }
     .form-servico-card{
-        width: 90%;
+        width: 100%;
     }
 
     .titleDesc h1{
@@ -160,5 +267,15 @@ td, th {
         color: #7b7b7b;
         margin-bottom: 3em;
         font-size: 14pt;
+      }
+      .example-full-width {
+        width: 100%;
+        display: grid;
+      }
+      .backPage{
+        display: flex;
+        font-size: 12pt;
+        bottom: 20px;
+        position: relative;
       }
 }

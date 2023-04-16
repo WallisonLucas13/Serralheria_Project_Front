@@ -86,7 +86,7 @@ mat-card{
 .example-form input[type="text"]::placeholder,  input[type="tel"]::placeholder{
   background-color: #222;
   border: none;
-  color: #f4f4f4;
+  color: #7b7b7b;
 }
   
   td {
@@ -133,6 +133,27 @@ mat-card{
   margin-bottom: 1em;
   font-size: 14pt;
 }
+.backPage{
+  display: flex;
+  font-size: 14pt;
+  margin-left: 0.5em;
+  bottom: 20px;
+  position: relative;
+}
+.backPage span{
+  color: #222;
+  border-bottom: 3px #ffbb33 solid;
+  margin-left: 0.5em;
+  cursor: pointer;
+  transition: 1.1;
+}
+.backPage span:hover{
+  color: gray;
+  border-bottom: 3px #ffbb33 solid;
+  margin-left: 0.5em;
+  cursor: pointer;
+  transform: scale(1.1);
+}
 @media screen and (max-width: 800px){
   mat-card{
     width: 80%;
@@ -168,5 +189,11 @@ mat-card{
 .example-full-width {
   width: 100%;
   display: grid;
+}
+.backPage{
+  display: flex;
+  font-size: 12pt;
+  bottom: 20px;
+  position: relative;
 }
 }
