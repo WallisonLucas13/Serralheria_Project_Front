@@ -29,11 +29,6 @@ export class LoginService {
     return axios.post<AuthenticationResponse>(this.API_POST, form.value);
   }
 
-  //Realiza Login com o Acesso do Usuário
-  sendLoginAccess(form: FormGroup){
-    return axios.post<AuthenticationResponse>(this.API_POST_ACCESS, form.value);
-  }
-
   //Verifica as permissões de Usuário *Método Utilizado em todas as Rotas
   public sendLoginWithToken(){
     axios.post(this.API_POST_ACCESS, this.tokenForm.value)

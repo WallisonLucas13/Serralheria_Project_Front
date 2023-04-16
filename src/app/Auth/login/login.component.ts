@@ -13,19 +13,17 @@ import { ToastrService } from 'ngx-toastr';
 export class LoginComponent {
 
   form: FormGroup;
-  formToken: FormGroup;
   hide: boolean = true;
 
-  constructor(private service: LoginService, private router: Router, private toast: ToastrService){
+  constructor(private service: LoginService, 
+    private router: Router, 
+    private toast: ToastrService){
 
     this.form = new FormGroup({
       username: new FormControl("", Validators.required),
       password: new FormControl("", Validators.required)
     });
 
-    this.formToken = new FormGroup({
-      token: new FormControl("", Validators.required)
-    });
   }
 
   submit(){
@@ -49,41 +47,9 @@ export class LoginComponent {
         positionClass: "toast-bottom-center"
       })
 
-      setTimeout(() => location.replace("clientes"), 1000);
+      setTimeout(() => this.router.navigateByUrl("clientes"), 1000);
     })
     .catch(() => {
-      
-      this.toast.error("Credenciais Inválidas", "", {
-        timeOut: 2000,
-        positionClass: "toast-bottom-center"
-      })
-
-    })
-  }
-
-  submitToken(){
-
-    if(this.formToken.get('token')?.invalid){
-      this.toast.warning("Campo Vazio! Tente Novamente!", "", {
-          timeOut: 2000,
-          positionClass: "toast-bottom-center"
-      })
-      return;
-    }
-
-    this.service.sendLoginAccess(this.formToken).then(() => {
-      
-      localStorage.setItem("token", this.formToken.value.token);
-
-      this.toast.success("Entrou!", "", {
-        timeOut: 1000,
-        positionClass: "toast-bottom-center"
-      })
-
-      setTimeout(() => location.replace("clientes"), 1000);
-    })
-    .catch(() => {
-      
       this.toast.error("Credenciais Inválidas", "", {
         timeOut: 2000,
         positionClass: "toast-bottom-center"

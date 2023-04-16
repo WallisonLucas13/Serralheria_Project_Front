@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 6em;
+    margin-top: 2em;
     flex-direction: column;
 }
 .example-spacer {
@@ -16,7 +16,7 @@
 }
 
 .toolbar-card{
-    border-bottom: 1px #7b7b7b solid;
+    border-bottom: 3px #ffbb33 solid;
     margin-bottom: 1.5em;
     width: 100%;
   }
@@ -31,38 +31,34 @@
 }
 .contentButton button{
     transition: 0.5s;
+    border: 1px #ffbb33 solid;
 }
 .contentButton button:hover{
     background-color: #222;
     color: #ffbb33;
 }
-.orMessage{
-  color: #7b7b7b;
-  margin-bottom: 1.5em;
-}
-.orMessage h1{
-  font-size: 14pt;
-  border-bottom: 2px #ffbb33 solid;
+ input[type="text"]{
+  border: none;
 }
 
 @media screen and (max-width: 800px){
     .formCard{
       width: 80%;
-      margin: 2em auto;
+      margin:auto;
       text-align: center;
   }
   }
   @media screen and (max-width: 600px){
     .formCard{
       width: 90%;
-      margin: 4em auto;
+      margin:auto;
       text-align: center;
   }
   }
   @media screen and (max-width: 500px){
     .formCard{
       width: 95%;
-      margin: 4em auto;
+      margin:auto;
       text-align: center;
   }
 }
