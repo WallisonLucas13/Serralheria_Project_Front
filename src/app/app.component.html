@@ -11,7 +11,7 @@
         
         <button mat-stroked-button (click)="goCursosPage()">Clientes</button>
 
-        <div class="sairContent" (click)="sair()" >
+        <div class="sairContent" (click)="sair()" *ngIf="isLogged()">
           <button mat-stroked-button style="color: #dd4b39;">Sair</button>
           <mat-icon>logout</mat-icon>
         </div>

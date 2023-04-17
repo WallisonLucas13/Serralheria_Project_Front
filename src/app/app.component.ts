@@ -38,4 +38,7 @@ export class AppComponent {
     });
     setTimeout(() => location.reload(),2000);
   }
+  isLogged(){
+    return location.pathname != "/user/login";
+  }
 }
