@@ -37,7 +37,8 @@ export class AdminComponent {
 
     this.formCadastro = new FormGroup({
       username: new FormControl(""),
-      password: new FormControl("")
+      password: new FormControl(""),
+      writePermission: new FormControl("")
     });
   }
 

@@ -152,6 +152,12 @@
                             </button>
                         </div>
                     </div>
+
+                    <div  class="example-full-width">
+                        <mat-label>Definir Nível de Acesso</mat-label>
+                        <mat-checkbox class="example-margin" formControlName="writePermission" color="primary"><span>Escrita</span></mat-checkbox>
+                        <mat-checkbox class="example-margin" [disabled]="true" checked color="primary"><span>Leitura</span></mat-checkbox>
+                    </div>
     
                 <div class="contentButton">
                     <button mat-stroked-button (click)="submitCadastro()">Cadastrar</button>
