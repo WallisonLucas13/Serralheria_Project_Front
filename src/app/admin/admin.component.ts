@@ -98,6 +98,8 @@ export class AdminComponent {
             })
             this.formCadastro.reset(this.formCadastro);
             this.getUsers();
+            this.count = 0;
+            this.scrollToUsers();
           }),
           catchError(() => {
             this.toast.error("Credenciais Inválidas", "", {
