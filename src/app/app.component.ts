@@ -30,4 +30,12 @@ export class AppComponent {
   goCursosPage(){
     this.route.navigateByUrl("clientes");
   }
+  sair(){
+    localStorage.clear();
+    this.toast.error("Saiu!", "", {
+      timeOut: 1000,
+      positionClass: "toast-bottom-center"
+    });
+    setTimeout(() => location.reload(),2000);
+  }
 }

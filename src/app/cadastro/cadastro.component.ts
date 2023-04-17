@@ -70,8 +70,7 @@ export class CadastroComponent {
       }),
 
       catchError(() => {
-
-        this.toast.error("Cliente Existente, Altere os campos!", "Fail!", {
+        this.toast.error("Sem Permissão!", "", {
           timeOut: 2000,
           positionClass: "toast-bottom-center"
         });

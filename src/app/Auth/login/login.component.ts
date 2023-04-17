@@ -46,6 +46,7 @@ export class LoginComponent {
     .then((response) => {
       
       localStorage.setItem("token", response.data.token);
+      this.service.token = response.data.token
 
       this.toast.success("Entrou!", "", {
         timeOut: 1000,

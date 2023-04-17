@@ -108,7 +108,7 @@ export class ServicoDetailsComponent {
       }),
 
       catchError(() => {
-        this.toast.error("Erro! Tente Novamente mais tarde!", "",{
+        this.toast.error("Sem Permissão!", "", {
           timeOut: 2000,
           positionClass: "toast-bottom-center"
         });
@@ -140,7 +140,7 @@ export class ServicoDetailsComponent {
       }),
 
       catchError(() => {
-        this.toast.error("Serviço Existente, Altere os campos!", "",{
+        this.toast.error("Sem Permissão!", "", {
           timeOut: 2000,
           positionClass: "toast-bottom-center"
         });
@@ -175,11 +175,20 @@ export class ServicoDetailsComponent {
         this.getMaoDeObra();
       }),
 
-      catchError(() => {
+      catchError((err) => {
+
+        if(err.status === 403){
+          this.toast.error("Sem Permissão!", "", {
+            timeOut: 2000,
+            positionClass: "toast-bottom-center"
+          });
+        }
+        else{
         this.toast.error("Material Existente, Altere os campos!", "",{
           timeOut: 2000,
           positionClass: "toast-bottom-center"
         });
+      }
 
         return of([]);
       })
@@ -214,7 +223,7 @@ export class ServicoDetailsComponent {
       }),
 
       catchError(() => {
-        this.toast.error("Problemas com o servidor, Tente Novamente!", "",{
+        this.toast.error("Sem Permissão!", "", {
           timeOut: 2000,
           positionClass: "toast-bottom-center"
         });
@@ -247,7 +256,7 @@ export class ServicoDetailsComponent {
       }),
 
       catchError(() => {
-        this.toast.error("Problemas com o servidor, Tente Novamente!", "",{
+        this.toast.error("Sem Permissão!", "", {
           timeOut: 2000,
           positionClass: "toast-bottom-center"
         });
@@ -286,7 +295,7 @@ export class ServicoDetailsComponent {
       }),
 
       catchError(() => {
-        this.toast.error("Problemas com o servidor, Tente Novamente!", "",{
+        this.toast.error("Sem Permissão!", "", {
           timeOut: 2000,
           positionClass: "toast-bottom-center"
         });

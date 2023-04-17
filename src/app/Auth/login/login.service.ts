@@ -13,7 +13,7 @@ export class LoginService {
 
   private API_POST: string  = "https://serralheriaproject-production.up.railway.app/api/login";
   private API_POST_ACCESS: string  = "https://serralheriaproject-production.up.railway.app/api/login/access";
-  private token: string = "";
+  public token: string = "";
   private tokenForm: FormGroup;
 
   constructor(private toast: ToastrService, private router: Router) {
@@ -31,6 +31,8 @@ export class LoginService {
 
   //Verifica as permissões de Usuário *Método Utilizado em todas as Rotas
   public sendLoginWithToken(){
+    this.tokenForm = new FormGroup({token: new FormControl(this.token)});
+
     axios.post(this.API_POST_ACCESS, this.tokenForm.value)
     .catch(() => {
       this.toast.warning("Acesso Expirado, Entre Novamente!", "",{

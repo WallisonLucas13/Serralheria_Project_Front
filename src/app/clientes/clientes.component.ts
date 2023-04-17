@@ -70,10 +70,10 @@ export class clientesComponent {
 
       catchError(() => {
 
-          this.toast.error("Servidor Indisponivel! Tente Novamente mais tarde!", "",{
-            timeOut: 2000,
-            positionClass: "toast-bottom-center"
-          });
+        this.toast.error("Sem Permissão!", "", {
+          timeOut: 2000,
+          positionClass: "toast-bottom-center"
+        });
         
         return of([]);
       })

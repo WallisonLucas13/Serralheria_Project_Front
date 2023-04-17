@@ -118,6 +118,16 @@
   font-family: monospace;
   font-size: 13pt;
 }
+.sairContent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #dd4b39;
+}
+.sairContent:hover{
+  border-bottom: 2px #ffbb33 solid;
+  cursor: pointer;
+}
 @media screen and (max-width: 620px){
 
   .navContent{

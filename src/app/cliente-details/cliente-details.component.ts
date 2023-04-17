@@ -101,7 +101,7 @@ export class clienteDetailsComponent {
       }),
 
       catchError(() => {
-        this.toast.error("Erro! Tente Novamente mais tarde!", "",{
+        this.toast.error("Sem Permissão!", "", {
           timeOut: 2000,
           positionClass: "toast-bottom-center"
         });
@@ -132,6 +132,13 @@ export class clienteDetailsComponent {
         }),
 
         catchError(error => {
+
+          if(error.status === 403){
+            this.toast.error("Sem Permissão!", "", {
+              timeOut: 2000,
+              positionClass: "toast-bottom-center"
+            });
+          }
 
           if(error.status == 400){
             this.toast.error("Cliente Existente, Altere os campos!", "", {
@@ -166,7 +173,7 @@ export class clienteDetailsComponent {
       }),
 
       catchError(() => {
-        this.toast.error("Estamos enfrentando Problemas! Tente Novamente mais tarde!", "", {
+        this.toast.error("Sem Permissão!", "", {
           timeOut: 2000,
           positionClass: "toast-bottom-center"
         });
