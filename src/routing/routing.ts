@@ -1,6 +1,7 @@
 import { ModuleWithProviders } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { LoginComponent } from "src/app/Auth/login/login.component";
+import { AdminComponent } from "src/app/admin/admin.component";
 import { CadastroComponent } from "src/app/cadastro/cadastro.component";
 import { clienteDetailsComponent } from "src/app/cliente-details/cliente-details.component";
 import { clientesComponent } from "src/app/clientes/clientes.component";
@@ -15,7 +16,8 @@ const ROUTES: Routes = [
     {path: 'cliente/details/',component: clienteDetailsComponent},
     {path: 'cliente/details',component: clienteDetailsComponent},
     {path: 'servico/details/', component: ServicoDetailsComponent},
-    {path: 'servico/details', component: ServicoDetailsComponent}
+    {path: 'servico/details', component: ServicoDetailsComponent},
+    {path: 'user/admin', component: AdminComponent}
 ]
 
 export const routing: ModuleWithProviders<RouterModule> = RouterModule.forRoot(ROUTES);

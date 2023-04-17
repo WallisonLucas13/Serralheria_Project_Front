@@ -1,0 +1,31 @@
+<div class="contentAll">
+
+    <mat-card class="formCard">
+
+        <mat-toolbar class="toolbar-card">
+            <span>Acesso</span>
+            <span class="example-spacer"></span>
+            <mat-icon style="color: #222;font-size: 20pt;">token</mat-icon>
+        </mat-toolbar>
+
+        <form [formGroup]="form" class="example-form">
+
+                <div class="example-full-width">
+                    <mat-label>Código de Acesso</mat-label>
+                    <div class="passContent">
+                        <input matInput [type]="hide ? 'password' : 'text'" formControlName="code" placeholder="Insira sua senha">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon style="color: #ffbb33;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </div>
+                </div>
+
+            <div class="contentButton">
+                <button mat-stroked-button (click)="submit()">Confirmar</button>
+            </div>
+
+        </form>
+
+    </mat-card>
+
+</div>

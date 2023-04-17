@@ -1,0 +1,200 @@
+.contentAll{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.example-spacer {
+    flex: 1 1 auto;
+  }
+.titleDesc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 1.5em;
+  }
+  .titleDesc h1{
+    font-size: 20pt;
+    font-weight: bold
+  }
+  .titleDesc p{
+    color: #7b7b7b;
+    margin-bottom: 1.5em;
+    font-size: 14pt;
+  }
+
+  .formCard{
+    width: 50%;
+    background-color: #222;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    margin: auto;
+    margin-bottom: 2em;
+}
+
+.toolbar-card{
+    border-bottom: 3px #ffbb33 solid;
+    margin-bottom: 0.5em;
+    width: 100%;
+    background-color: #ffbb33;
+    font-family: monospace;
+    color:#222;
+  }
+
+.contentInput{
+    width: 100%;
+}
+.contentButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+}
+.contentButton button{
+    transition: 0.5s;
+    border: 1px #ffbb33 solid;
+    color: #ffbb33;
+    transition: 0.5s;
+}
+.contentButton button:hover{
+    background-color: #ffbb33;
+    color: #222;
+    transform: scale(1.1);
+}
+ input[type="text"]{
+  border: none;
+}
+
+.example-full-width {
+  width: 100%;
+  background-color:#222;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  text-align: start;
+  margin-bottom: 0.5em;
+}
+.passContent{
+  display: flex;
+}
+.example-form input[type="text"], input[type="password"]{
+background-color: #222;
+border-bottom: 1px white solid;
+color: #f4f4f4;
+padding: 1.5em;
+border-top: none;
+border-left: none;
+border-right: none;
+}
+.example-form{
+  padding: 1.5em;
+  padding-top: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.example-form input[type="text"]:focus, input[type="password"]:focus{
+background-color: #222;
+border:none;
+color: #f4f4f4;
+border-bottom: 1px #ffbb33 solid;
+}
+.example-form mat-label{
+background-color: #222;
+margin-bottom: 0.5em;
+border: none;
+color: #f4f4f4;
+margin-top: 1em;
+}
+.example-form input[type="text"]::placeholder,  input[type="password"]::placeholder{
+background-color: #222;
+border: none;
+color: #7b7b7b;
+}
+td, th {
+    text-align: center !important;
+    vertical-align: middle !important;
+  }
+  .cardContent{
+    background-color: #222;
+    width: 50%;
+    margin-top: 5em;
+    margin-bottom: 2em;
+    margin: auto;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  }
+  .contentTable{
+    overflow-x: auto;
+    background-color: #222;
+  }
+  .contentTable::-webkit-scrollbar {
+    width: 15px; 
+  }
+  
+  .contentTable::-webkit-scrollbar-track {
+    background-color: #222;
+  }
+  
+  .contentTable::-webkit-scrollbar-thumb {
+    background: #ffbb33;
+    border-radius: 5px;
+  }
+  
+  .cellHeader{
+    color: #ffbb33;
+    font-family: monospace;
+    font-size: 13pt;
+  }
+  .cellBody{
+    color: #f4f4f4;
+  }
+
+@media screen and (max-width: 800px){
+    .formCard{
+      width: 80%;
+      margin:auto;
+      text-align: center;
+  }
+  .cardContent{
+    background-color: #222;
+    width: 70%;
+    margin-top: 5em;
+    margin: auto;
+  }
+  .example-form{
+    padding: 1.5em;
+    padding-top: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  }
+  @media screen and (max-width: 600px){
+    .formCard{
+      width: 90%;
+      margin:auto;
+      text-align: center;
+  }
+  .cardContent{
+    background-color: #222;
+    width: 90%;
+    margin-top: 5em;
+    margin: auto;
+  }
+  }
+  @media screen and (max-width: 500px){
+    .formCard{
+      width: 95%;
+      margin:auto;
+      text-align: center;
+  }
+  .cardContent{
+    background-color: #222;
+    width: 100%;
+    margin-top: 5em;
+    margin: auto;
+  }
+}

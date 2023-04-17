@@ -30,6 +30,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatMenuModule} from '@angular/material/menu';
 import { LoginComponent } from './Auth/login/login.component';
 import { ToastrModule } from "ngx-toastr";
+import { AdminComponent } from './admin/admin.component';
+import {MatDividerModule} from '@angular/material/divider';
+import { ConfirmAccessComponent } from './confirm-access/confirm-access.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,9 @@ import { ToastrModule } from "ngx-toastr";
     CadastroComponent,
     clienteDetailsComponent,
     ServicoDetailsComponent,
-    LoginComponent
+    LoginComponent,
+    AdminComponent,
+    ConfirmAccessComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +69,8 @@ import { ToastrModule } from "ngx-toastr";
     MatExpansionModule,
     MatCheckboxModule,
     MatMenuModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

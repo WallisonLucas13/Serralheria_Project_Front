@@ -25,7 +25,7 @@ export class LoginService {
    }
 
   //Realiza Login com as Credenciais Básicas
-  sendLogin(form: FormGroup){
+  public sendLogin(form: FormGroup){
     return axios.post<AuthenticationResponse>(this.API_POST, form.value);
   }
 
