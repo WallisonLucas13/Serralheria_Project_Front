@@ -3,7 +3,7 @@ import { LoginService } from '../Auth/login/login.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AdminService } from './admin.service';
 import { ToastrService } from 'ngx-toastr';
-import { Observable, catchError, map, of } from 'rxjs';
+import { Observable, catchError, delay, map, of, timeout } from 'rxjs';
 import { AxiosResponse } from 'axios';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmAccessComponent } from '../confirm-access/confirm-access.component';
@@ -17,6 +17,7 @@ export class AdminComponent {
 
   formAdmin: FormGroup;
   hide: boolean = true;
+  hide2: boolean = true;
   tokenAdmin: string = "";
   usersList$: Observable<String[]> | undefined;
   formCadastro: FormGroup;
@@ -56,6 +57,17 @@ export class AdminComponent {
     });
   }
 
+  scrollToUsers(){
+    const element = document.getElementById("card");
+      if(element){
+        const top = element.offsetTop-200;
+        window.scrollTo({
+          top: top,
+          behavior:'smooth'
+        });
+      }
+  }
+
   submitCadastro() {
 
     this.dialog.open(ConfirmAccessComponent, {
@@ -65,10 +77,19 @@ export class AdminComponent {
     }).afterClosed().subscribe((res) => {
 
       if (res) {
+
+        this.toast.info("Criando Usuário...", "",{
+          timeOut: 1000,
+          positionClass: "toast-bottom-center",
+          progressBar: true,
+          progressAnimation: 'increasing'
+        })
+
         this.adminService.submitCadastro(this.formCadastro, this.tokenAdmin).pipe(
+          delay(1000),
           map(() => {
             this.toast.success("Usuário Cadastrado!", "", {
-              timeOut: 1000,
+              timeOut: 2000,
               positionClass: "toast-bottom-center"
             })
             this.formCadastro.reset(this.formCadastro);
@@ -98,7 +119,16 @@ export class AdminComponent {
     }).afterClosed().subscribe((res) => {
 
     if (res) {
+
+      this.toast.info("Apagando Usuário...", "",{
+        timeOut: 1000,
+        positionClass: "toast-bottom-center",
+        progressBar: true,
+        progressAnimation: 'increasing'
+      })
+    
     this.adminService.deleteUser(user, this.tokenAdmin).pipe(
+      delay(1000),
       map(() => {
         this.toast.success("Usuário Apagado!", "", {
           timeOut: 1000,

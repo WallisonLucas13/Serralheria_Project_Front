@@ -28,14 +28,14 @@ export class ConfirmAccessComponent {
     this.service.submit(this.form, this.data.token).pipe(
       map(() => {
         this.toast.success("Acesso Permitido!","",{
-          positionClass: "toast-top-right",
-          timeOut: 3000
+          positionClass: "toast-bottom-center",
+          timeOut: 1000
         })
         this.ref.close(true);
       }),
       catchError(() => {
         this.toast.error("Acesso Negado!","",{
-          positionClass: "toast-top-right",
+          positionClass: "toast-bottom-center",
           timeOut: 3000
         })
         return of([]);

@@ -170,18 +170,18 @@
                                 <mat-icon>delete</mat-icon>
                             </button>
 
-                            <mat-menu #menu="matMenu" xPosition="before">
+                            <mat-menu #menu="matMenu" xPosition="before" style="background-color: #222;">
                                 <button mat-menu-item style="background-color: #222;">
                                   <mat-icon style="color: #ffbb33;">warning</mat-icon>
                                   <span style="color: #ffbb33;">Tem Certeza?</span>
                                 </button>
-                                <button mat-menu-item  style="background-color: lightcoral;margin-bottom: 0;">
+                                <button mat-menu-item style="background-color: #222;margin-bottom: 0;">
                                   <mat-icon style="color: #9f0601;">close</mat-icon>
-                                  <span style="color: #9f0601;">Não</span>
+                                  <span style="color: #ffbb33;">Não</span>
                                 </button>
-                                <button mat-menu-item (click)="deleteMaterial(element.id)" style="background-color: lightgreen;">
+                                <button mat-menu-item (click)="deleteMaterial(element.id)" style="background-color:#222">
                                     <mat-icon style="color: green">check</mat-icon>
-                                    <span>Sim</span>
+                                    <span style="color: #ffbb33;">Sim</span>
                                   </button>
                               </mat-menu>
 

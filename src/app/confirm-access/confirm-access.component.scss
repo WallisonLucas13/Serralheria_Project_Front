@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     background-color: #222;
+    overflow-x: hidden;
 }
 .example-spacer {
     flex: 1 1 auto;
@@ -72,10 +73,11 @@
   }
   .example-form mat-label{
   background-color: #222;
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
   border: none;
   color: #f4f4f4;
   margin-top: 1em;
+  width: 100%;
   }
   .example-form input[type="text"]::placeholder,  input[type="password"]::placeholder{
   background-color: #222;
@@ -94,15 +96,9 @@
 
   @media screen and (max-width: 800px){
     .formCard{
-      width: 80%;
+      width: 100%;
       margin:auto;
       text-align: center;
-  }
-  .cardContent{
-    background-color: #222;
-    width: 70%;
-    margin-top: 5em;
-    margin: auto;
   }
   .example-form{
     padding: 1.5em;
@@ -114,27 +110,19 @@
   }
   @media screen and (max-width: 600px){
     .formCard{
-      width: 90%;
+      width: 100%;
       margin:auto;
       text-align: center;
-  }
-  .cardContent{
-    background-color: #222;
-    width: 90%;
-    margin-top: 5em;
-    margin: auto;
   }
   }
   @media screen and (max-width: 500px){
     .formCard{
-      width: 95%;
+      width: 100%;
       margin:auto;
       text-align: center;
   }
-  .cardContent{
-    background-color: #222;
-    width: 100%;
-    margin-top: 5em;
-    margin: auto;
+  .passContent button{
+     position: relative;
+     right: 50px;
   }
 }

@@ -34,9 +34,9 @@
                 <div class="example-full-width">
                     <mat-label>Chave</mat-label>
                     <div class="passContent">
-                        <input matInput [type]="hide ? 'password' : 'text'" formControlName="chaveAccess" placeholder="Insira sua chave de acesso">
-                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                        <mat-icon style="color: #ffbb33;">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        <input matInput [type]="hide2 ? 'password' : 'text'" formControlName="chaveAccess" placeholder="Insira sua chave de acesso">
+                        <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+                        <mat-icon style="color: #ffbb33;">{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
                     </div>
                 </div>
@@ -53,14 +53,14 @@
 
     <mat-divider></mat-divider>
 
-    <div *ngIf="tokenAdmin" style="margin-top: 3em;">
+    <div *ngIf="tokenAdmin" style="margin-top: 3em;"  id="card">
 
         <div class="titleDesc" style="margin-bottom: 2em;">
             <h1>Gerencie os usuários do Sistema</h1>
             <p>Aqui você obtem acesso a todos os usuários</p>
         </div>
 
-        <mat-card class="cardContent">
+        <mat-card class="cardContent" id="cardContent">
 
             <mat-toolbar class="toolbar-card">
                 <span>Usuários</span>
@@ -69,7 +69,7 @@
             </mat-toolbar>         
     
             <div *ngIf="usersList$ | async as users; else loading" class="contentTable">
-    
+                {{scrollToUsers()}}
                 <table mat-table [dataSource]="users" class="mat-elevation-z8" style="background-color: #222;color: #f4f4f4;margin-bottom: 2em;">
     
                     <ng-container matColumnDef="nome">
@@ -85,18 +85,18 @@
                                 <mat-icon>delete</mat-icon>
                               </button>
     
-                              <mat-menu #menu="matMenu" xPosition="before">
+                              <mat-menu #menu="matMenu" xPosition="before" style="background-color: #222;">
                                 <button mat-menu-item style="background-color: #222;">
                                   <mat-icon style="color: #ffbb33;">warning</mat-icon>
                                   <span style="color: #ffbb33;">Tem Certeza?</span>
                                 </button>
-                                <button mat-menu-item  style="background-color: lightcoral;margin-bottom: 0;">
+                                <button mat-menu-item style="background-color: #222;margin-bottom: 0;">
                                   <mat-icon style="color: #9f0601;">close</mat-icon>
-                                  <span style="color: #9f0601;">Não</span>
+                                  <span style="color: #ffbb33;">Não</span>
                                 </button>
-                                <button mat-menu-item (click)="deleteUser(user)" style="background-color: lightgreen;">
+                                <button mat-menu-item (click)="deleteUser(user)" style="background-color:#222">
                                     <mat-icon style="color: green">check</mat-icon>
-                                    <span>Sim</span>
+                                    <span style="color: #ffbb33;">Sim</span>
                                   </button>
                               </mat-menu>
     
@@ -119,13 +119,13 @@
     
     </mat-card>
 
-    <mat-divider></mat-divider>
+    <mat-divider style="margin-top: 3em;"></mat-divider>
 
     <div style="margin-top: 3em;">
 
         <div class="titleDesc" style="margin-bottom: 2em;">
             <h1>Libere Acesso aos seus funcionários</h1>
-            <p>Controle suas permissões e níveis de influencia</p>
+            <p>Controle suas permissões e níveis de influência</p>
         </div>
 
         <mat-card class="formCard">

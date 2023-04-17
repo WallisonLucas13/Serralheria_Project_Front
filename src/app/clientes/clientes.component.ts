@@ -56,7 +56,7 @@ export class clientesComponent {
     this.route.navigateByUrl('cliente/details/');
   }
 
-  deletecliente(id: number){
+  deleteCliente(id: number){
     this.service.deleteRequest(id).pipe(
 
       map(() => {
