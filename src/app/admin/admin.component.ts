@@ -21,6 +21,7 @@ export class AdminComponent {
   tokenAdmin: string = "";
   usersList$: Observable<String[]> | undefined;
   formCadastro: FormGroup;
+  count: number = 0;
 
   constructor(private loginService: LoginService,
     private adminService: AdminService,
@@ -58,6 +59,7 @@ export class AdminComponent {
   }
 
   scrollToUsers(){
+    if(this.count == 0){
     const element = document.getElementById("card");
       if(element){
         const top = element.offsetTop-200;
@@ -65,7 +67,9 @@ export class AdminComponent {
           top: top,
           behavior:'smooth'
         });
+        this.count++;
       }
+    }
   }
 
   submitCadastro() {
