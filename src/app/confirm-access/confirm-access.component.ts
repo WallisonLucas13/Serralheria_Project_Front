@@ -39,11 +39,12 @@ export class ConfirmAccessComponent {
             positionClass: "toast-bottom-center",
             timeOut: 3000
           })
-        }
+        }else{
         this.toast.error("Acesso Negado!","",{
           positionClass: "toast-bottom-center",
           timeOut: 3000
         })
+      }
         return of([]);
       })
     ).subscribe(() => {})
