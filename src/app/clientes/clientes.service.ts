@@ -16,21 +16,20 @@ export class clientesService {
   private HEADER_FULL: HttpHeaders = new HttpHeaders();
   private HEADER_NAME: string = "Authorization";
   private HEADER_BODY: string = "Bearer ";
-  private token: string;
+  private token: string = "";
 
   constructor(private http: HttpClient) {
-    this.token = String(localStorage.getItem('token'));
-    this.HEADER_BODY += this.token;
-    this.HEADER_FULL = this.HEADER_FULL.set(this.HEADER_NAME, this.HEADER_BODY);
   }
 
   getRequest(){
+    this.token = "";
     this.token = String(localStorage.getItem('token'));
     this.HEADER_BODY += this.token;
     this.HEADER_FULL = this.HEADER_FULL.set(this.HEADER_NAME, this.HEADER_BODY);
     return this.http.get<cliente[]>(this.API_GET, {headers: this.HEADER_FULL});
   }
   deleteRequest(id: number){
+    this.token = "";
     this.token = String(localStorage.getItem('token'));
     this.HEADER_BODY += this.token;
     this.HEADER_FULL = this.HEADER_FULL.set(this.HEADER_NAME, this.HEADER_BODY);
