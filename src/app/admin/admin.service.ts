@@ -3,6 +3,7 @@ import { LoginService } from '../Auth/login/login.service';
 import { FormGroup } from '@angular/forms';
 import axios from 'axios';
 import { HttpClient } from '@angular/common/http';
+import UserViewModel from '../models/UserViewModel';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class AdminService {
   }
 
   getUsers(token: string){
-    return this.http.get<String[]>(this.API_GET_USERS, {
+    return this.http.get<UserViewModel[]>(this.API_GET_USERS, {
       headers: {
         Authorization: `Bearer ${token}`
       }

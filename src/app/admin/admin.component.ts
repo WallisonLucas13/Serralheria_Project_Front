@@ -7,6 +7,7 @@ import { Observable, catchError, delay, map, of, timeout } from 'rxjs';
 import { AxiosResponse } from 'axios';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmAccessComponent } from '../confirm-access/confirm-access.component';
+import UserViewModel from '../models/UserViewModel';
 
 @Component({
   selector: 'app-admin',
@@ -19,7 +20,7 @@ export class AdminComponent {
   hide: boolean = true;
   hide2: boolean = true;
   tokenAdmin: string = "";
-  usersList$: Observable<String[]> | undefined;
+  usersList$: Observable<UserViewModel[]> | undefined;
   formCadastro: FormGroup;
   count: number = 0;
 
@@ -45,7 +46,7 @@ export class AdminComponent {
   submit() {
 
     if(this.formAdmin.get('username')?.invalid || this.formAdmin.get('password')?.invalid ||
-    this.formAdmin.get('chaveAccess')?.invalid){
+      this.formAdmin.get('chaveAccess')?.invalid){
 
      this.toast.warning("Campos Vazios! Tente Novamente!", "", {
          timeOut: 2000,
@@ -167,6 +168,6 @@ export class AdminComponent {
     }})
   }
 
-  displayedColumns: string[] = ['nome', 'delete'];
+  displayedColumns: string[] = ['nome','permissions','delete'];
 
 }
