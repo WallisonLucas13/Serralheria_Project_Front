@@ -43,7 +43,19 @@ export class AdminComponent {
   }
 
   submit() {
+
+    if(this.formAdmin.get('username')?.invalid || this.formAdmin.get('password')?.invalid ||
+    this.formAdmin.get('chaveAccess')?.invalid){
+
+     this.toast.warning("Campos Vazios! Tente Novamente!", "", {
+         timeOut: 2000,
+         positionClass: "toast-bottom-center"
+     })
+     return;
+ }
+
     this.loginService.sendLogin(this.formAdmin).then(res => {
+
       this.tokenAdmin = res.data.token;
       this.toast.success("Entrou!", "", {
         timeOut: 1000,

@@ -47,7 +47,7 @@ export class CadastroComponent {
     if(this.form.get('nome')?.invalid || this.form.get('tel')?.invalid ||
        this.form.get('bairro')?.invalid || this.form.get('endereco')?.invalid){
 
-        this.toast.warning("Campos Vazios! Tente Novamente!", "Fail!", {
+        this.toast.warning("Campos Vazios! Tente Novamente!", "", {
             timeOut: 2000,
             positionClass: "toast-bottom-center"
         })
