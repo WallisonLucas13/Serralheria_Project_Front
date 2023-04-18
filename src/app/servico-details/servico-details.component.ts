@@ -135,8 +135,11 @@ export class ServicoDetailsComponent {
           timeOut: 1000,
           positionClass: "toast-bottom-center"
         });
+
+        this.formServico.addControl("id", new FormControl(this.servicoDetails?.id));
+        localStorage.setItem("servicoDetails", JSON.stringify(this.formServico.value));
         
-        setTimeout(() => this.route.navigateByUrl('cliente/details'),1000);
+        setTimeout(() => location.reload(),1000);
       }),
 
       catchError(() => {

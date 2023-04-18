@@ -39,6 +39,7 @@ export class clienteDetailsComponent {
     }
 
     const cliente = localStorage.getItem('clienteDetails');
+
     if(cliente){
       this.clienteDetails = JSON.parse(cliente);
 
@@ -112,7 +113,9 @@ export class clienteDetailsComponent {
 
   submit(){
 
-      if(this.form_cliente?.get('nome')?.invalid || this.form_cliente?.get('tel')?.invalid){
+      if(this.form_cliente?.get('nome')?.invalid || this.form_cliente?.get('tel')?.invalid,
+        this.form_cliente?.get('bairro')?.invalid || this.form_cliente?.get('endereco')?.invalid){
+
         this.toast.warning("Campos Vazios! Tente Novamente!", "Fail!",{
           timeOut: 2000,
           positionClass: "toast-bottom-center"
@@ -127,8 +130,10 @@ export class clienteDetailsComponent {
             positionClass: "toast-bottom-center"
           });
 
-          this.form_cliente.reset(this.form_cliente);
-          setTimeout(() => this.route.navigateByUrl('clientes'),1000);
+          this.form_cliente.addControl("id", new FormControl(this.clienteDetails?.id));
+
+          localStorage.setItem("clienteDetails", JSON.stringify(this.form_cliente.value));
+          setTimeout(() => location.reload(),1000);
         }),
 
         catchError(error => {

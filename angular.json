@@ -20,6 +20,7 @@
             "outputPath": "dist/clientes-crud",
             "index": "src/index.html",
             "main": "src/main.ts",
+            "styles": "src/styles.scss",
             "polyfills": [
               "zone.js"
             ],

@@ -59,11 +59,20 @@ mat-card mat-card-content{
     margin-left: 8px;
   }
 
-.loading-spinner{
+  .loading-spinner{
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 50px;
+    height: 50px;
+    padding: 25px;
+    margin: auto;
+    color: #ffbb33;
 }
+.loading-spinner mat-spinner{
+  color: #ffbb33;
+}
+
 .example-spacer {
   flex: 1 1 auto;
 }

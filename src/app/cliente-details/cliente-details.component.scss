@@ -72,10 +72,6 @@ td, th {
     width: 100%;
   }
   
-.example-full-width {
-    width: 100%;
-  }
-  
   td {
     padding-right: 8px;
   }
@@ -153,13 +149,15 @@ td, th {
 }
   
 .example-full-width {
-    width: 100%;
+    width: 90%;
     background-color:#222;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     text-align: start;
     margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    margin: auto;
   }
 .example-form input[type="text"], input[type="tel"],textarea{
   background-color: #222;
@@ -171,20 +169,21 @@ td, th {
   border-right: none;
 }
 .example-form input[type="text"]:focus, input[type="tel"]:focus,textarea:focus{
-  background-color: #222;
+  background-color: transparent;
   border:none;
   color: #f4f4f4;
   border-bottom: 1px #ffbb33 solid;
 }
 .example-form mat-label{
-  background-color: #222;
+  background-color: transparent;
   margin-bottom: 0.5em;
   border: none;
   color: #f4f4f4;
   margin-top: 1em;
+  margin-left: 1em;
 }
 .example-form input[type="text"]::placeholder,  input[type="tel"]::placeholder,textarea::placeholder{
-  background-color: #222;
+  background-color: transparent;
   border: none;
   color: #7b7b7b;
 }
@@ -269,13 +268,24 @@ td, th {
         font-size: 14pt;
       }
       .example-full-width {
-        width: 100%;
-        display: grid;
+        width: 80%;
+        display:flex;
+        margin: auto;
       }
       .backPage{
         display: flex;
         font-size: 12pt;
         bottom: 20px;
         position: relative;
+      }
+      .example-form input[type="text"], input[type="tel"],textarea{
+        background-color: #222;
+        border-bottom: 1px white solid;
+        color: #f4f4f4;
+        padding: 1.5em;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        width: 80%;
       }
 }

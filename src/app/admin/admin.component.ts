@@ -28,7 +28,6 @@ export class AdminComponent {
     private adminService: AdminService,
     private toast: ToastrService,
     private dialog: MatDialog) {
-    this.loginService.sendLoginWithToken();
 
     this.formAdmin = new FormGroup({
       username: new FormControl(""),
@@ -131,7 +130,7 @@ export class AdminComponent {
   getUsers() {
     this.usersList$ = this.adminService.getUsers(this.tokenAdmin);
   }
-  
+
   deleteUser(user: string) {
     this.dialog.open(ConfirmAccessComponent, {
       data: {
