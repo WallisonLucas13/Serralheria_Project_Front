@@ -25,9 +25,15 @@ export class clientesService {
   }
 
   getRequest(){
+    this.token = String(localStorage.getItem('token'));
+    this.HEADER_BODY += this.token;
+    this.HEADER_FULL = this.HEADER_FULL.set(this.HEADER_NAME, this.HEADER_BODY);
     return this.http.get<cliente[]>(this.API_GET, {headers: this.HEADER_FULL});
   }
   deleteRequest(id: number){
+    this.token = String(localStorage.getItem('token'));
+    this.HEADER_BODY += this.token;
+    this.HEADER_FULL = this.HEADER_FULL.set(this.HEADER_NAME, this.HEADER_BODY);
     this.param_delete = this.param_delete.set('id', id);
 
     return this.http.delete<string>(this.API_DELETE, {params: this.param_delete, headers: this.HEADER_FULL});
