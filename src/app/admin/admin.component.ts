@@ -131,6 +131,7 @@ export class AdminComponent {
   getUsers() {
     this.usersList$ = this.adminService.getUsers(this.tokenAdmin);
   }
+  
   deleteUser(user: string) {
     this.dialog.open(ConfirmAccessComponent, {
       data: {

@@ -33,7 +33,13 @@ export class ConfirmAccessComponent {
         })
         this.ref.close(true);
       }),
-      catchError(() => {
+      catchError((err) => {
+        if(err.status === 406){
+          this.toast.error("Código Expirou! Faça Login novamente para renovar o código!","",{
+            positionClass: "toast-bottom-center",
+            timeOut: 3000
+          })
+        }
         this.toast.error("Acesso Negado!","",{
           positionClass: "toast-bottom-center",
           timeOut: 3000
