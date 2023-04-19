@@ -69,8 +69,8 @@ export class ServicoDetailsComponent {
 
     this.formMaterial = new FormGroup({
       nome: new FormControl("",[Validators.required]),
-      quant: new FormControl("1",[Validators.required]),
-      valor: new FormControl("0", [Validators.required])
+      quant: new FormControl("",[Validators.required]),
+      valor: new FormControl("", [Validators.required])
     });
 
     this.formServicoMaoDeObra = new FormGroup({

@@ -1,4 +1,4 @@
-.contentAll{
+.contentAll {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -7,121 +7,79 @@
 .example-spacer {
   flex: 1 1 auto;
 }
-.loading-spinner{
+
+.loading-spinner {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 25px;
 }
-.loading-spinner-mini{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    padding: 10px;
-}
-td, th {
-    text-align: center !important;
-    vertical-align: middle !important;
-}
-.example-form {
-    width: 100%;
-  }
-  
-.example-full-width {
-    width: 100%;
-  }
-  
-  td {
-    padding-right: 8px;
-  }
 
-  .maoDeObraForm{
-    width: 50%;
-    margin:auto;
-    text-align: center;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  }
-  .descontoForm{
-    width: 50%;
-    margin:auto;
-    text-align: center;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  }
-  .orcamentoForm{
-    width: 80%;
-    margin:auto;
-    text-align: center;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  }
-
-  .example-section {
-    display: flex;
-    align-content: center;
-    align-items: center;
-    height: 60px;
-  }
-  
-  .example-margin {
-    margin: 0 5px;
-  }
-
-  .titleDesc{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-bottom: 2em;
-  }
-  .titleDesc h1{
-    font-size: 20pt;
-    font-weight: bold
-  }
-  .titleDesc p{
-    color: #7b7b7b;
-    font-size: 14pt;
-  }
-  .custoMaterial{
-    color: green;
-    margin-left: 1em;
-  }
-  .card-info{
-    width: 60%;
-    margin: auto;
-    text-align: center;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    background-color:#222;
-}
-.card-info mat-toolbar{
-  background-color: #ffbb33;
-  color: #222;
-  font-family: monospace;
-  font-size: 12pt;
-}
-
-.box-Orcamento-Content{
+.loading-spinner-mini {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 10px;
+}
+
+//Title -----------------------------
+.titleDesc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   margin-bottom: 2em;
 }
 
-.backPage{
+.titleDesc h1 {
+  font-size: 20pt;
+  font-weight: bold
+}
+
+.titleDesc p {
+  color: #7b7b7b;
+  font-size: 14pt;
+}
+
+//----------------------------------
+
+.custoMaterial {
+  color: green;
+  margin-left: 1em;
+  font-weight: bold;
+}
+
+.box-Orcamento-Content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1em;
+  margin-top: 1.5em;
+}
+.box-Orcamento-Content span{
+  color: #7b7b7b;
+}
+
+//Back Line -------------------------------------
+.backPage {
   display: flex;
   font-size: 14pt;
   margin-left: 0.5em;
   bottom: 20px;
   position: relative;
 }
-.backPage span{
+
+.backPage span {
   color: #222;
   border-bottom: 3px #ffbb33 solid;
   margin-left: 0.5em;
   cursor: pointer;
   transition: 1.1;
 }
-.backPage span:hover{
+
+.backPage span:hover {
   color: gray;
   border-bottom: 3px #ffbb33 solid;
   margin-left: 0.5em;
@@ -129,20 +87,26 @@ td, th {
   transform: scale(1.1);
 }
 
-.cellHeader{
+//---------------------------------------------
+
+//Table ---------------------------------------
+.cellHeader {
   color: #ffbb33;
   font-family: monospace;
   font-size: 13pt;
 }
-.cellBody{
+
+.cellBody {
   color: #f4f4f4;
 }
-.contentTable{
+
+.contentTable {
   overflow-x: auto;
   background-color: #222;
 }
+
 .contentTable::-webkit-scrollbar {
-  width: 15px; 
+  width: 15px;
 }
 
 .contentTable::-webkit-scrollbar-track {
@@ -153,49 +117,71 @@ td, th {
   background: #ffbb33;
   border-radius: 5px;
 }
-.atualizar-servico-card{
+
+//--------------------------------------------
+
+//Cards ---------------------------
+.card-materiais,
+.maoDeObraForm,
+.descontoForm,
+.orcamentoForm,
+.atualizar-servico-card,
+.card-info {
   background-color: #222;
   margin-top: 3em;
-  width: 60%;
+  width: 50%;
   border: 1px #222 solid;
   margin: auto;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-.atualizar-servico-card mat-toolbar{
+
+//---------------------------------
+//Toolbar Cards -------------------
+.card-materiais mat-toolbar,
+.maoDeObraForm mat-toolbar,
+.descontoForm mat-toolbar,
+.orcamentoForm mat-toolbar,
+.atualizar-servico-card mat-toolbar,
+.card-info mat-toolbar {
   background-color: #ffbb33;
   font-family: monospace;
   font-size: 13pt;
   margin-bottom: 1em;
 }
-.contentButton{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1.5em;
-}
-.contentButton button{
-  transition: 0.5s;
-  border: 1px #ffbb33 solid;
-  color: #ffbb33;
-  transition: 0.5s;
-}
-.contentButton button:hover{
-  background-color: #ffbb33;
-  color: #222;
-  transform: scale(1.1);
-}
 
+//--------------------------------
+
+//Inputs Customs ------------------
 .example-full-width {
   width: 90%;
-  background-color:#222;
+  background-color: #222;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  text-align: start;
-  margin-bottom: 0.5em;
-  margin-top: 0.5em;
-  margin: auto;
 }
-.example-form input[type="text"], textarea{
+
+.example-full-width-maoDeObra,
+.example-full-width-desconto {
+  width: 40%;
+  background-color: #222;
+  display: flex;
+  flex-direction: column;
+}
+
+.example-form {
+  width: 100%;
+  background-color: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 15px;
+}
+
+.example-form input[type="text"],
+input[type="number"],
+input[type="email"],
+textarea{
   background-color: #222;
   border-bottom: 1px white solid;
   color: #f4f4f4;
@@ -204,12 +190,17 @@ td, th {
   border-left: none;
   border-right: none;
 }
-.example-form input[type="text"]:focus, textarea:focus{
+
+.example-form input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+input[type="email"]:focus {
   background-color: #222;
-  border:none;
+  border: none;
   color: #f4f4f4;
   border-bottom: 1px #ffbb33 solid;
 }
+
 .example-form mat-label{
   background-color: #222;
   margin-bottom: 0.5em;
@@ -217,134 +208,165 @@ td, th {
   color: #f4f4f4;
   margin-top: 1em;
 }
-.example-form input[type="text"]::placeholder, textarea::placeholder{
+
+.example-form input[type="text"]::placeholder,
+input[type="number"]::placeholder,
+textarea::placeholder,
+input[type="email"]::placeholder {
   background-color: #222;
   border: none;
   color: #7b7b7b;
 }
 
-  @media screen and (max-width: 820px) {
-    .descIcon{
-        display: none;
-    }
-    .headerPanel{
-        padding: 1.5em;
-    }
-    mat-card{
-      width: 90%;
-      margin: auto;
-      text-align: center;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+.example-form button {
+  background-color: #222;
+  color: #ffbb33;
+  border: 1px #ffbb33 solid;
+  margin-top: 1.5em;
+  transition: 0.2s;
+}
+
+.example-form button:hover {
+  transform: scale(1.1);
+  background-color: #ffbb33;
+  color: #222;
+}
+
+.contentFormTitle {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+//-----------------------------------------------------------------
+
+//Responsive Media 900px
+@media screen and (max-width: 900px) {
+  .descIcon {
+    display: none;
   }
-    .custoMaterialDesc{
-      display: none;
-    }
-    .custoMaterial{
-      color: green;
-      display: block;
-    }
-    .card-materiais{
-      width: 100%;
-    }
-    .content-form-material{
-      display: flex;
-      flex-direction: column;
-    }
-    .maoDeObraForm{
-      width: 70%;
-      margin:auto;
-      text-align: center;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    }
-    .descontoForm{
-      width: 70%;
-      margin:auto;
-      text-align: center;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    }
-    .orcamentoForm{
-      width: 100%;
-      margin: auto;
-      text-align: center;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    }
-    .example-section {
-      display: flex;
-      align-content: center;
-      align-items: center;
-      height: 60px;
-      padding: 1.5em;
-    }
-    .atualizar-servico-card{
-      width: 80%;
-    }
+
+  .headerPanel {
+    padding: 1.5em;
+  }
+
+  .custoMaterialDesc {
+    display: none;
+  }
+
+  .custoMaterial {
+    color: green;
+    display: block;
+  }
+
+  .card-materiais {
+    width: 100%;
+  }
+
+  .content-form-material {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .maoDeObraForm {
+    width: 70%;
+    margin: auto;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  .descontoForm {
+    width: 70%;
+    margin: auto;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  .orcamentoForm {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  .atualizar-servico-card {
+    width: 80%;
+  }
 }
 
+//------------------------------------------------------
+
+//Responsive Media 550px -------------------------------
 @media screen and (max-width: 550px) {
-    .card-info{
-        width: 100%;
-        margin: auto;
-        text-align: center;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    }
-    .example-full-width {
-        width: 100%;
-        display: grid;
-      }
+  .card-info {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
 
-    .atualizar-servico-card{
-      width: 100%;
-    }
-    .maoDeObraForm{
-      width: 100%;
-      margin:auto;
-      text-align: center;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    }
-    .descontoForm{
-      width: 100%;
-      margin:auto;
-      text-align: center;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    }
-    .orcamentoForm{
-      width: 100%;
-      margin:auto;
-      text-align: center;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    }
-    .example-section {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      justify-content:center;
-      padding: 2em;
-    }
+  .example-full-width {
+    width: 100%;
+    display: grid;
+  }
 
-    .titleDesc h1{
-      font-size: 16pt;
-      font-weight: bold;
-      text-align: center;
-    }
-    
-    .titleDesc p{
-      text-align: center;
-      color: #7b7b7b;
-      font-size: 14pt;
-    }
-    .descIconHeader{
-      display: none;
-    }
-    .backPage{
-      display: flex;
-      font-size: 12pt;
-      bottom: 20px;
-      position: relative;
-    }
+  .atualizar-servico-card {
+    width: 100%;
+  }
+
+  .maoDeObraForm {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  .descontoForm {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  .orcamentoForm {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  .titleDesc h1 {
+    font-size: 16pt;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .titleDesc p {
+    text-align: center;
+    color: #7b7b7b;
+    font-size: 14pt;
+  }
+
+  .descIconHeader {
+    display: none;
+  }
+
+  .backPage {
+    display: flex;
+    font-size: 12pt;
+    bottom: 20px;
+    position: relative;
+  }
+
+  .example-form mat-label {
+    margin-left: 1em;
+  }
+
 }
+//----------------------------------------------
 
 @media screen and (max-width: 400px) {
-  .descIconPaid{
+  .descIconPaid {
     display: none;
   }
 }
