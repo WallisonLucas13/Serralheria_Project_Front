@@ -431,9 +431,9 @@
                         </div>
 
                         <div class="example-full-width-pagamentoSelect">
-                            <mat-label>Forma de Pagamento</mat-label>
-                            <select formControlName="formaPagamento" placeholder="Escolher">
-                                <option value="" disabled selected="selected">ESCOLHER</option>
+                            <mat-label>Forma de Pagamento <span *ngIf="maoDeObra$ | async as maoDeObra; else loadingMini" style="color:#ffbb33;"> - {{maoDeObra.entrada.formaPagamento}}</span></mat-label>
+                            <select formControlName="formaPagamento">
+                                <option value="" disabled selected="selected">ALTERAR</option>
                                 <option value="DEBITO">DEBITO</option>
                                 <option value="CREDITO">CREDITO</option>
                                 <option value="PIX">PIX</option>
