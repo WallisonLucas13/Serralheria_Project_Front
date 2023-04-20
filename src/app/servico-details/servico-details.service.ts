@@ -5,6 +5,7 @@ import { ValoresServico } from '../models/ValoresServico';
 import { Material } from '../models/material';
 import { Servico } from '../models/servico';
 import { Desconto } from '../models/desconto';
+import Entrada from '../models/Entrada';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,7 @@ export class ServicoDetailsService {
   private API_SERVICO_MAO_DE_OBRA_GET: string = "https://serralheriaproject-production.up.railway.app/Servicos/Valores";
   private param_SERVICO_DESCONTO_PUT: HttpParams = new HttpParams();
   private API_SERVICO_DESCONTO_PUT: string = "https://serralheriaproject-production.up.railway.app/Servicos/Desconto";
+  private API_SERVICO_ENTRADA_PUT: string = "https://serralheriaproject-production.up.railway.app/Servicos/Entrada/";
   private param_SERVICO_ORCAMENTO_POST: HttpParams = new HttpParams();
   private API_SERVICO_ORCAMENTO_POST: string = "https://serralheriaproject-production.up.railway.app/Servicos/Orcamento";
 
@@ -82,6 +84,10 @@ export class ServicoDetailsService {
     this.param_SERVICO_DESCONTO_PUT = this.param_SERVICO_DESCONTO_PUT.set('id', String(id));
 
     return this.http.put<Desconto>(this.API_SERVICO_DESCONTO_PUT, form.value,{params: this.param_SERVICO_DESCONTO_PUT,  headers: this.HEADER_FULL});
+  }
+  sendPutEntrada(id: number | undefined, form: FormGroup){
+    this.API_SERVICO_ENTRADA_PUT = "https://serralheriaproject-production.up.railway.app/Servicos/Entrada/"+id;
+    return this.http.put<Entrada>(this.API_SERVICO_ENTRADA_PUT, form.value);
   }
 
   sendPostOrcamento(form: FormGroup, id: number | undefined){

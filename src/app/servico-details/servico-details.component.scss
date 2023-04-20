@@ -167,6 +167,34 @@
   display: flex;
   flex-direction: column;
 }
+.example-full-width-pagamentoSelect{
+  margin-top: 1.5em;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 1.5em;
+  color: #f4f4f4;
+}
+.example-full-width-pagamentoSelect select{
+  border: none;
+  padding: 1em;
+  background-color: transparent;
+  border-bottom: 1px #f4f4f4 solid;
+  color: #ffbb33;
+}
+.example-full-width-pagamentoSelect select::placeholder{
+  color: #ffbb33;
+}
+.example-full-width-pagamentoSelect mat-label{
+  color: #ffbb33;
+  margin-bottom: 0.5em;
+}
+.example-full-width-pagamentoSelect select option{
+ background-color: #222;
+  color: #f4f4f4;
+  border: none;
+}
 
 .example-form {
   width: 100%;
@@ -194,7 +222,7 @@ textarea{
 .example-form input[type="text"]:focus,
 input[type="number"]:focus,
 textarea:focus,
-input[type="email"]:focus {
+input[type="email"]:focus{
   background-color: #222;
   border: none;
   color: #f4f4f4;
@@ -212,7 +240,7 @@ input[type="email"]:focus {
 .example-form input[type="text"]::placeholder,
 input[type="number"]::placeholder,
 textarea::placeholder,
-input[type="email"]::placeholder {
+input[type="email"]::placeholder{
   background-color: #222;
   border: none;
   color: #7b7b7b;

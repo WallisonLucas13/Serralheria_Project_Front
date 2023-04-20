@@ -32,6 +32,7 @@ export class ServicoDetailsComponent {
   loading_template: boolean = false;
   servicoDetails: Servico | undefined;
   servicoDetailsList: Servico[] = [];
+  entradaForm: FormGroup;
 
   constructor(private route: Router, private service: ServicoDetailsService, private toast: ToastrService, 
     private loginService: LoginService){
@@ -79,6 +80,10 @@ export class ServicoDetailsComponent {
 
     this.descontoForm = new FormGroup({
       porcentagem: new FormControl("", [Validators.required])
+    })
+    this.entradaForm = new FormGroup({
+      porcentagem: new FormControl("", [Validators.required]),
+      formaPagamento: new FormControl("", [Validators.required])
     })
 
     this.getMaoDeObra();
@@ -202,6 +207,9 @@ export class ServicoDetailsComponent {
 
   getMaoDeObra(){
     this.maoDeObra$ = this.service.sendGetMaoDeObra(this.servicoDetails?.id);
+    this.maoDeObra$.subscribe(response => {
+      console.log(response);
+    });
   }
 
   submitMaoDeObra(){
@@ -240,7 +248,7 @@ export class ServicoDetailsComponent {
   submitDesconto(){
 
     if(this.descontoForm.get('porcentagem')?.invalid){
-      this.toast.warning("Campos Vazio! Tente Novamente!", "",{
+      this.toast.warning("Campo Vazio! Tente Novamente!", "",{
         timeOut: 2000,
         positionClass: "toast-bottom-center"
       });
@@ -251,6 +259,41 @@ export class ServicoDetailsComponent {
       
       map(() => {
         this.toast.success("Desconto aplicado com Sucesso!", "",{
+          timeOut: 1000,
+          positionClass: "toast-bottom-center"
+        });
+
+        this.getMaoDeObra();
+      }),
+
+      catchError(() => {
+        this.toast.error("Sem Permissão!", "", {
+          timeOut: 2000,
+          positionClass: "toast-bottom-center"
+        });
+
+        return of([]);
+      })
+
+    ).subscribe(() => {});
+  }
+
+  submitEntrada(){
+
+    if(this.entradaForm.get('porcentagem')?.invalid || this.entradaForm.get('formaPagamento')?.invalid){
+      this.toast.warning("Campos Vazios! Tente Novamente!", "",{
+        timeOut: 2000,
+        positionClass: "toast-bottom-center"
+      });
+      return;
+    }
+
+    console.log(this.entradaForm.get('formaPagamento')?.value);
+
+    this.service.sendPutEntrada(this.servicoDetails?.id, this.entradaForm).pipe(
+      
+      map(() => {
+        this.toast.success("Entrada Definida!", "",{
           timeOut: 1000,
           positionClass: "toast-bottom-center"
         });

@@ -256,7 +256,8 @@
                                     </tr>
                                 </table>
 
-                                <div style="display: flex;justify-content: center;align-items: center;margin-bottom: 1.5em;">
+                                <div
+                                    style="display: flex;justify-content: center;align-items: center;margin-bottom: 1.5em;">
                                     <button mat-stroked-button (click)="submitMaterial()">Adicionar</button>
                                 </div>
                             </form>
@@ -292,7 +293,8 @@
             <mat-card class="maoDeObraForm">
                 <mat-toolbar>
                     <div *ngIf="maoDeObra$ | async as maoDeObra; else loadingMini">
-                        <span style="font-size: 12pt;display: flex;flex-wrap: wrap;">Custo Mão De Obra: <span style="color: green;"> R$
+                        <span style="font-size: 12pt;display: flex;flex-wrap: wrap;">Custo Mão De Obra: <span
+                                style="color: green;"> R$
                                 {{maoDeObra.valor}},00 </span></span>
                     </div>
                     &nbsp;
@@ -324,7 +326,7 @@
         <mat-expansion-panel (opened)="setPanelShow(6)" [expanded]="panelShow === 6">
             <mat-expansion-panel-header class="headerPanel">
                 <mat-panel-title>
-                    Gerenciar Custo Final Do Serviço
+                    Aplicar Desconto
                     &nbsp;
                     <mat-icon class="descIcon">paid</mat-icon>
                 </mat-panel-title>
@@ -347,8 +349,9 @@
                 <mat-toolbar>
 
                     <div *ngIf="maoDeObra$ | async as maoDeObra; else loadingMini">
-                        <span style="font-size: 13pt;display: flex;flex-wrap: wrap;">Desconto de {{maoDeObra.desconto}}%: <span style="color: green;">
-                                 R$
+                        <span style="font-size: 13pt;display: flex;flex-wrap: wrap;">Desconto de
+                            {{maoDeObra.desconto}}%: <span style="color: green;">
+                                R$
                                 {{maoDeObra.valorFinal}},00 </span></span>
                     </div>
 
@@ -367,7 +370,7 @@
                                 required>
                         </div>
 
-                        <div  style="display: flex;justify-content: center;align-items: center;margin-bottom: 1.5em;">
+                        <div style="display: flex;justify-content: center;align-items: center;margin-bottom: 1.5em;">
                             <button mat-stroked-button (click)="submitDesconto()">Aplicar</button>
                         </div>
 
@@ -381,6 +384,78 @@
 
     <mat-accordion>
         <mat-expansion-panel (opened)="setPanelShow(7)" [expanded]="panelShow === 7">
+            <mat-expansion-panel-header class="headerPanel">
+                <mat-panel-title>
+                    Gerenciar Entrada
+                    &nbsp;
+                    <mat-icon class="descIcon">paid</mat-icon>
+                </mat-panel-title>
+
+                <mat-panel-description>
+
+                    <div *ngIf="maoDeObra$ | async as maoDeObra; else loadingMini">
+                        <span>Entrada: <span style="color: green;"> R$ {{maoDeObra.entrada.valor}},00</span> com
+                            porcentagem
+                            de {{maoDeObra.entrada.porcentagem}}%</span>
+                    </div>
+
+                    <span class="example-spacer"></span>
+                    <mat-icon class="descIconHeader">paid</mat-icon>
+                </mat-panel-description>
+
+            </mat-expansion-panel-header>
+
+            <mat-card class="descontoForm">
+                <mat-toolbar>
+
+                    <div *ngIf="maoDeObra$ | async as maoDeObra; else loadingMini">
+                        <span style="font-size: 13pt;display: flex;flex-wrap: wrap;">Entrada de
+                            {{maoDeObra.entrada.porcentagem}}%: <span style="color: green;">
+                                R$
+                                {{maoDeObra.entrada.valor}},00 </span></span>
+                    </div>
+
+                    <span class="example-spacer"></span>
+                    <mat-icon class="descIconPaid">payments</mat-icon>
+                </mat-toolbar>
+
+                <mat-card-content>
+
+                    <br>
+                    <form [formGroup]="entradaForm" class="example-form">
+
+                        <div class="example-full-width-desconto">
+                            <mat-label>Entrada</mat-label>
+                            <input type="number" matInput placeholder="1" formControlName="porcentagem" max="100"
+                                required>
+                        </div>
+
+                        <div class="example-full-width-pagamentoSelect">
+                            <mat-label>Forma de Pagamento</mat-label>
+                            <select formControlName="formaPagamento" placeholder="Escolher">
+                                <option value="" disabled selected="selected">ESCOLHER</option>
+                                <option value="DEBITO">DEBITO</option>
+                                <option value="CREDITO">CREDITO</option>
+                                <option value="PIX">PIX</option>
+                                <option value="DINHEIRO">DINHEIRO</option>
+                                <option value="DEFAULT">OUTRO</option>
+                            </select>
+                        </div>
+
+                        <div style="display: flex;justify-content: center;align-items: center;margin-bottom: 1.5em;">
+                            <button mat-stroked-button (click)="submitEntrada()">Aplicar</button>
+                        </div>
+
+                    </form>
+
+                </mat-card-content>
+
+            </mat-card>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+        <mat-expansion-panel (opened)="setPanelShow(8)" [expanded]="panelShow === 8">
             <mat-expansion-panel-header class="headerPanel">
                 <mat-panel-title>
                     Gerar Orçamento do serviço
@@ -415,14 +490,17 @@
 
                         <div class="box-Orcamento-Content">
 
-                            <mat-checkbox class="example-margin" color="accent" formControlName="ocultarMateriais"><span>Ocultar
-                                Materiais</span></mat-checkbox>
+                            <mat-checkbox class="example-margin" color="accent"
+                                formControlName="ocultarMateriais"><span>Ocultar
+                                    Materiais</span></mat-checkbox>
 
-                            <mat-checkbox class="example-margin" color="accent" formControlName="ocultarMaoDeObra"><span>Ocultar
-                                Mão De Obra</span></mat-checkbox>
+                            <mat-checkbox class="example-margin" color="accent"
+                                formControlName="ocultarMaoDeObra"><span>Ocultar
+                                    Mão De Obra</span></mat-checkbox>
 
-                            <mat-checkbox class="example-margin" color="accent" formControlName="ocultarDesconto"><span>Ocultar
-                                Desconto</span></mat-checkbox>
+                            <mat-checkbox class="example-margin" color="accent"
+                                formControlName="ocultarDesconto"><span>Ocultar
+                                    Desconto</span></mat-checkbox>
 
                         </div>
 
