@@ -86,8 +86,8 @@ export class ServicoDetailsService {
     return this.http.put<Desconto>(this.API_SERVICO_DESCONTO_PUT, form.value,{params: this.param_SERVICO_DESCONTO_PUT,  headers: this.HEADER_FULL});
   }
   sendPutEntrada(id: number | undefined, form: FormGroup){
-    this.API_SERVICO_ENTRADA_PUT = "https://serralheriaproject-production.up.railway.app/Servicos/Entrada/"+id;
-    return this.http.put<Entrada>(this.API_SERVICO_ENTRADA_PUT, form.value);
+    this.API_SERVICO_ENTRADA_PUT = "https://serralheriaproject-production.up.railway.app/Servicos/Entrada/" + id;
+    return this.http.put<Entrada>(this.API_SERVICO_ENTRADA_PUT, form.value, {headers: this.HEADER_FULL});
   }
 
   sendPostOrcamento(form: FormGroup, id: number | undefined){
