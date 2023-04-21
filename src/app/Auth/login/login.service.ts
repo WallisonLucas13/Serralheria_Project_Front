@@ -37,7 +37,7 @@ export class LoginService {
       .then(() => {
         if (location.pathname == "/user/login") {
           this.toast.success("Bem vindo de volta!", "", {
-            positionClass: "toast-bottom-center",
+            positionClass: "toast-top-right",
             timeOut: 2000
           })
           setTimeout(() => this.router.navigateByUrl("clientes"), 2000);
