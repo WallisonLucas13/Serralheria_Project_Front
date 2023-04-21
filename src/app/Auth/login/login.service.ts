@@ -34,6 +34,15 @@ export class LoginService {
     this.tokenForm = new FormGroup({token: new FormControl(this.token)});
 
     axios.post(this.API_POST_ACCESS, this.tokenForm.value)
+    .then(() => {
+      if(location.pathname == "/user/login"){
+        this.toast.success("Bem vindo de volta!", "",{
+          positionClass: "toast-bottom-center",
+          timeOut: 2000
+        })
+        setTimeout(() => this.router.navigateByUrl("clientes"), 2000);
+      }
+    })
     .catch(() => {
       this.toast.warning("Acesso Expirado, Entre Novamente!", "",{
         timeOut: 2000,
