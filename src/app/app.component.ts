@@ -14,7 +14,7 @@ export class AppComponent {
   formVerifyLogged: FormGroup | undefined;
 
   constructor(private route: Router, private loginService: LoginService, private toast: ToastrService) {
-    if (location.pathname != "/user/admin") {
+    if (location.pathname != "/user/admin" && location.pathname != "/user/login") {
       if (localStorage.getItem("token")) {
         this.loginService.sendLoginWithToken();
       } else {
