@@ -19,6 +19,10 @@ export class LoginComponent {
     private router: Router, 
     private toast: ToastrService){
 
+      if(localStorage.getItem('token')){
+        this.service.sendLoginWithToken();
+      }
+
       this.toast.info("Realize Login para ter acesso ao Sistema!","",{
         positionClass: "toast-top-right",
         timeOut: 3000

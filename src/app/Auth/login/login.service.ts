@@ -39,6 +39,7 @@ export class LoginService {
         timeOut: 2000,
         positionClass: "toast-bottom-center"
       });
+      localStorage.clear();
       setTimeout(() => this.router.navigateByUrl("user/login"),2000);
     })
   }

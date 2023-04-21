@@ -33,6 +33,7 @@ export class ServicoDetailsComponent {
   servicoDetails: Servico | undefined;
   servicoDetailsList: Servico[] = [];
   entradaForm: FormGroup;
+  pagamentoFinalForm: FormGroup;
   isDivEm: boolean = false;
 
   constructor(private route: Router, private service: ServicoDetailsService, private toast: ToastrService, 
@@ -84,6 +85,9 @@ export class ServicoDetailsComponent {
     })
     this.entradaForm = new FormGroup({
       porcentagem: new FormControl("", [Validators.required]),
+      formaPagamento: new FormControl("", [Validators.required])
+    })
+    this.pagamentoFinalForm = new FormGroup({
       formaPagamento: new FormControl("", [Validators.required])
     })
 
@@ -209,9 +213,13 @@ export class ServicoDetailsComponent {
   getMaoDeObra(){
     this.maoDeObra$ = this.service.sendGetMaoDeObra(this.servicoDetails?.id);
     this.maoDeObra$.subscribe(response => {
+      console.log(response);
       this.entradaForm = new FormGroup({
         porcentagem: new FormControl(response.entrada.porcentagem, [Validators.required]),
         formaPagamento: new FormControl(response.entrada.formaPagamento, [Validators.required])
+      })
+      this.pagamentoFinalForm = new FormGroup({
+        formaPagamento: new FormControl(response.pagamentoFinal.formaPagamento, [Validators.required])
       })
     });
   }
@@ -314,6 +322,40 @@ export class ServicoDetailsComponent {
 
     ).subscribe(() => {});
   }
+
+  submitFormaPagamentoFinal(){
+
+    if(this.pagamentoFinalForm.get('formaPagamento')?.invalid){
+      this.toast.warning("Campo Vazio! Tente Novamente!", "",{
+        timeOut: 2000,
+        positionClass: "toast-bottom-center"
+      });
+      return;
+    }
+
+    this.service.sendPutPagamentoFinal(this.servicoDetails?.id, this.pagamentoFinalForm).pipe(
+      
+      map(() => {
+        this.toast.success("Forma de Pagamento Atualizada!", "",{
+          timeOut: 1000,
+          positionClass: "toast-bottom-center"
+        });
+
+        this.getMaoDeObra();
+      }),
+
+      catchError(() => {
+        this.toast.error("Sem Permissão!", "", {
+          timeOut: 2000,
+          positionClass: "toast-bottom-center"
+        });
+
+        return of([]);
+      })
+
+    ).subscribe(() => {});
+  }
+
 
   sendOrcamentoRequest(){
 

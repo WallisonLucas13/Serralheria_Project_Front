@@ -334,7 +334,7 @@
                 <mat-panel-description>
 
                     <div *ngIf="maoDeObra$ | async as maoDeObra; else loadingMini">
-                        <span>Custo Final: <span style="color: green;"> R$ {{maoDeObra.valorFinal}},00</span> com
+                        <span>SubTotal: <span style="color: green;"> R$ {{maoDeObra.valorFinal}},00</span> com
                             desconto
                             de {{maoDeObra.desconto}}%</span>
                     </div>
@@ -456,6 +456,66 @@
 
     <mat-accordion>
         <mat-expansion-panel (opened)="setPanelShow(8)" [expanded]="panelShow === 8">
+            <mat-expansion-panel-header class="headerPanel">
+                <mat-panel-title>
+                    Finalização
+                    &nbsp;
+                    <mat-icon class="descIcon">pending</mat-icon>
+                </mat-panel-title>
+
+                <mat-panel-description>
+
+                    <div *ngIf="maoDeObra$ | async as maoDeObra; else loadingMini">
+                        <span>Pagamento ao final do Serviço</span>
+                    </div>
+
+                    <span class="example-spacer"></span>
+                    <mat-icon class="descIconHeader">pending</mat-icon>
+                </mat-panel-description>
+
+            </mat-expansion-panel-header>
+
+            <mat-card class="descontoForm">
+                <mat-toolbar>
+
+                    <div *ngIf="maoDeObra$ | async as maoDeObra; else loadingMini">
+                        <span style="font-size: 13pt;display: flex;flex-wrap: wrap;">O pagamento será de: 
+                            <span style="color: green;margin-left: 0.5em;">R$ {{maoDeObra.pagamentoFinal.valor}},00</span></span>
+                    </div>
+
+                    <span class="example-spacer"></span>
+                    <mat-icon class="descIconPaid">payments</mat-icon>
+                </mat-toolbar>
+
+                <mat-card-content>
+                    <form [formGroup]="pagamentoFinalForm" class="example-form">
+
+                        <div class="example-full-width-pagamentoSelect">
+                            <mat-label>Forma de Pagamento <span *ngIf="maoDeObra$ | async as maoDeObra; else loadingMini" style="color:#ffbb33;"> - {{maoDeObra.pagamentoFinal.formaPagamento}}</span></mat-label>
+                            <select formControlName="formaPagamento">
+                                <option value="" disabled selected="selected">ALTERAR</option>
+                                <option value="DEBITO">DEBITO</option>
+                                <option value="CREDITO">CREDITO</option>
+                                <option value="PIX">PIX</option>
+                                <option value="DINHEIRO">DINHEIRO</option>
+                                <option value="DEFAULT">OUTRO</option>
+                            </select>
+                        </div>
+
+                        <div style="display: flex;justify-content: center;align-items: center;margin-bottom: 1.5em;">
+                            <button mat-stroked-button (click)="submitFormaPagamentoFinal()">Aplicar</button>
+                        </div>
+
+                    </form>
+
+                </mat-card-content>
+
+            </mat-card>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+        <mat-expansion-panel (opened)="setPanelShow(9)" [expanded]="panelShow === 9">
             <mat-expansion-panel-header class="headerPanel">
                 <mat-panel-title>
                     Gerar Orçamento do serviço

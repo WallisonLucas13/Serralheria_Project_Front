@@ -13,32 +13,34 @@ export class AppComponent {
   title = 'clientes-crud';
   formVerifyLogged: FormGroup | undefined;
 
-  constructor(private route: Router, private loginService: LoginService, private toast: ToastrService){
-    if(localStorage.getItem("token")){
-      this.loginService.sendLoginWithToken();
-    }else{
-      this.route.navigateByUrl("user/login")
+  constructor(private route: Router, private loginService: LoginService, private toast: ToastrService) {
+    if (location.pathname != "/user/admin") {
+      if (localStorage.getItem("token")) {
+        this.loginService.sendLoginWithToken();
+      } else {
+        this.route.navigateByUrl("user/login")
+      }
     }
   }
 
-  goHomePage(){
+  goHomePage() {
     this.route.navigateByUrl("");
   }
-  goCadastroPage(){
+  goCadastroPage() {
     this.route.navigateByUrl('cadastro');
   }
-  goCursosPage(){
+  goCursosPage() {
     this.route.navigateByUrl("clientes");
   }
-  sair(){
+  sair() {
     localStorage.clear();
     this.toast.error("Saiu!", "", {
       timeOut: 1000,
       positionClass: "toast-bottom-center"
     });
-    setTimeout(() => location.reload(),2000);
+    setTimeout(() => location.reload(), 2000);
   }
-  isLogged(){
+  isLogged() {
     return location.pathname != "/user/login" && location.pathname != "/user/admin";
   }
 }
