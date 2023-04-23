@@ -36,7 +36,7 @@
             <mat-icon style="color: #ffbb33;">add</mat-icon>
             <span style="color: #ffbb33;">Cadastrar Cliente</span>
           </button>
-          <button mat-menu-item class="menu-item" (click)="sair()" style="background-color: #222;">
+          <button mat-menu-item class="menu-item" (click)="sair()" *ngIf="isLogged()" style="background-color: #222;">
             <mat-icon style="color: #dd4b39;">logout</mat-icon>
             <span style="color: #dd4b39;">Sair</span>
           </button>
