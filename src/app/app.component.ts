@@ -17,8 +17,6 @@ export class AppComponent {
     if (location.pathname != "/user/admin" && location.pathname != "/user/login" && location.pathname != "") {
       if (localStorage.getItem("token")) {
         this.loginService.sendLoginWithToken();
-      } else if(location.pathname != ""){
-        this.route.navigateByUrl("user/login")
       }
     }
   }
