@@ -213,7 +213,6 @@ export class ServicoDetailsComponent {
   getMaoDeObra(){
     this.maoDeObra$ = this.service.sendGetMaoDeObra(this.servicoDetails?.id);
     this.maoDeObra$.subscribe(response => {
-      console.log(response);
       this.entradaForm = new FormGroup({
         porcentagem: new FormControl(response.entrada.porcentagem, [Validators.required]),
         formaPagamento: new FormControl(response.entrada.formaPagamento, [Validators.required])

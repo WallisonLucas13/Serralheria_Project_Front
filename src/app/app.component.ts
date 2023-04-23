@@ -14,7 +14,7 @@ export class AppComponent {
   formVerifyLogged: FormGroup | undefined;
 
   constructor(private route: Router, private loginService: LoginService, private toast: ToastrService) {
-    if (location.pathname != "/user/admin" && location.pathname != "/user/login" && location.pathname != "") {
+    if (location.pathname != "/user/admin" && location.pathname != "/user/login" && location.pathname != "/") {
       if (localStorage.getItem("token")) {
         this.loginService.sendLoginWithToken();
       }
@@ -39,6 +39,6 @@ export class AppComponent {
     setTimeout(() => location.reload(), 2000);
   }
   isLogged() {
-    return location.pathname != "/user/login" && location.pathname != "/user/admin" && location.pathname != "";
+    return location.pathname != "/user/login" && location.pathname != "/user/admin" && location.pathname != "/";
   }
 }
